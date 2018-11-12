@@ -159,10 +159,11 @@ setTimeout(() => {
     rules: rules
   }
 
+  process.stdout.write = old_stdout
+
   const README = readme.join('')+'\n'
   const json = JSON.stringify(complex_modifications_hyper_workman, null, '  ') + '\n'
 
-  process.stdout.write = old_stdout
   console.log('README: '+Buffer.byteLength(README)+' bytes')
   console.log('json: '+Buffer.byteLength(json)+' bytes')
   console.log('')
@@ -181,7 +182,6 @@ setTimeout(() => {
 
     console.log('')
     update_config(CONFIG_PATH, rules, profile === 'update_local' || profile === 'true' || profile)
-    // console.log(`updated ${CONFIG_PATH}`)
   } else {
     console.log('to update your karabiner profile:\n > node karabiner-profile.js update_local')
   }
@@ -272,6 +272,9 @@ const key_symbols = {
   "option": "⌥",
   "shift": "⇧",
   "caps_lock": "⇪",
+
+  // additional symbols
+  "hyper": "*",
 }
 
 // allow for keys to be referenced by symbol, too
@@ -330,16 +333,42 @@ function print_manipulators (manipulators) {
     if (manipulator.heading) {
       // group
       console.log('\n#### ' + manipulator.heading)
+      console.log('| from | to | description |')
+      console.log('| --- | --- | --- |')
       manipz.push(...print_manipulators(manipulator.manipulators))
     } else {
       // TODO: do little key inserts
-      console.log(`- ${manipulator.description}`)
+      // let txt = `- ${pretty_keys(manipulator.keys)}`
+      // if (manipulator.description) txt += ` (${manipulator.description})`
+      // console.log(`- ${pretty_keys(manipulator.keys)}` + manipulator.description ? ` (${manipulator.description})` : '')
+      print_key_description(manipulator.description)
       // console.log(util.inspect(manipulator, {depth: 4, breakLength: 150}) + '\n')
       manipz.push(manipulator)
     }
   }
 
   return manipz
+}
+
+function print_key_description (str) {
+  let parts
+  if (parts = /(.*) \-\> (.*) \((.*)\)/.exec(str)) {
+    console.log(`| ${pretty_keys(parts[1])} | ${pretty_keys(parts[2])} | *${parts[3]}* |`)
+  } else if (parts = /(.*) \-\> (.*)/.exec(str)) {
+    console.log(`| ${pretty_keys(parts[1])} | ${pretty_keys(parts[2])} | |`)
+  } else throw new Error(`unable to parse description: ${str}`)
+}
+
+function pretty_keys(str) {
+  let keys = str.split('+')
+  let kbd = []
+
+  for (let key of keys) {
+    if (key in MODIFIERS) kbd.push(key_symbols[key] || key)
+    else kbd.push(key)
+  }
+
+  return `<kbd>${kbd.join('</kbd>+<kbd>')}</kbd>`
 }
 
 function hyper_group (heading, manipulators) {
@@ -349,8 +378,11 @@ function hyper_group (heading, manipulators) {
 function hyper (from, to, opts = {}) {
   // TODO: in case of from/to being an object
   from = 'hyper+' + from
+  let desc = typeof opts === 'string' ? ` (${opts})`
+    : typeof opts.description === 'string' ? ` (${opts.description})`
+    : ''
   return {
-    description: `${from} -> ${to}`,
+    description: `${from} -> ${to}` + desc,
     from: get_key(from, to, opts),
     to: [ get_key(to) ],
     type: 'basic'

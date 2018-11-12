@@ -10,30 +10,42 @@ it uses the UNEO right-hand keys for navigation
 ##### move the cursor around (UNEO configuration)
 
 #### move up / down / left / right 1-char
-- hyper+u -> up
-- hyper+e -> down
-- hyper+n -> left
-- hyper+o -> right
+| from | to | description |
+| --- | --- | --- |
+| <kbd>*</kbd>+<kbd>u</kbd> | <kbd>up</kbd> | |
+| <kbd>*</kbd>+<kbd>e</kbd> | <kbd>down</kbd> | |
+| <kbd>*</kbd>+<kbd>n</kbd> | <kbd>left</kbd> | |
+| <kbd>*</kbd>+<kbd>o</kbd> | <kbd>right</kbd> | |
 
 #### normal jumping
-- hyper+cmd+f -> page_up
-- hyper+cmd+p -> page_down
+| from | to | description |
+| --- | --- | --- |
+| <kbd>*</kbd>+<kbd>cmd</kbd>+<kbd>f</kbd> | <kbd>page_up</kbd> | |
+| <kbd>*</kbd>+<kbd>cmd</kbd>+<kbd>p</kbd> | <kbd>page_down</kbd> | |
 
 #### move to beginning / end of line
-- hyper+cmd+n -> home
-- hyper+cmd+o -> end
+| from | to | description |
+| --- | --- | --- |
+| <kbd>*</kbd>+<kbd>cmd</kbd>+<kbd>n</kbd> | <kbd>home</kbd> | |
+| <kbd>*</kbd>+<kbd>cmd</kbd>+<kbd>o</kbd> | <kbd>end</kbd> | |
 
 #### move up / down 1-page
-- hyper+cmd+f -> page_up
-- hyper+cmd+p -> page_down
+| from | to | description |
+| --- | --- | --- |
+| <kbd>*</kbd>+<kbd>cmd</kbd>+<kbd>f</kbd> | <kbd>page_up</kbd> | |
+| <kbd>*</kbd>+<kbd>cmd</kbd>+<kbd>p</kbd> | <kbd>page_down</kbd> | |
 
 #### move up / down 1-paragraph
-- hyper+opt+u -> opt+up
-- hyper+opt+e -> opt+down
+| from | to | description |
+| --- | --- | --- |
+| <kbd>*</kbd>+<kbd>opt</kbd>+<kbd>u</kbd> | <kbd>opt</kbd>+<kbd>up</kbd> | |
+| <kbd>*</kbd>+<kbd>opt</kbd>+<kbd>e</kbd> | <kbd>opt</kbd>+<kbd>down</kbd> | |
 
 #### move left / right 1-word
-- hyper+opt+n -> opt+left
-- hyper+opt+o -> opt+right
+| from | to | description |
+| --- | --- | --- |
+| <kbd>*</kbd>+<kbd>opt</kbd>+<kbd>n</kbd> | <kbd>opt</kbd>+<kbd>left</kbd> | |
+| <kbd>*</kbd>+<kbd>opt</kbd>+<kbd>o</kbd> | <kbd>opt</kbd>+<kbd>right</kbd> | |
 
 
 ### Hyper Selection
@@ -41,20 +53,28 @@ it uses the UNEO right-hand keys for navigation
 ##### selecting chars under the cursor
 
 #### normal 1-char selection left / right
-- hyper+ctrl+n -> shift+left
-- hyper+ctrl+o -> shift+right
+| from | to | description |
+| --- | --- | --- |
+| <kbd>*</kbd>+<kbd>ctrl</kbd>+<kbd>n</kbd> | <kbd>shift</kbd>+<kbd>left</kbd> | |
+| <kbd>*</kbd>+<kbd>ctrl</kbd>+<kbd>o</kbd> | <kbd>shift</kbd>+<kbd>right</kbd> | |
 
 #### select til beginning / end of word
-- hyper+ctrl+n -> shift+opt+left
-- hyper+ctrl+o -> shift+opt+right
+| from | to | description |
+| --- | --- | --- |
+| <kbd>*</kbd>+<kbd>ctrl</kbd>+<kbd>n</kbd> | <kbd>shift</kbd>+<kbd>opt</kbd>+<kbd>left</kbd> | |
+| <kbd>*</kbd>+<kbd>ctrl</kbd>+<kbd>o</kbd> | <kbd>shift</kbd>+<kbd>opt</kbd>+<kbd>right</kbd> | |
 
 #### selection up / down to line
-- hyper+ctrl+u -> shift+up
-- hyper+ctrl+e -> shift+down
+| from | to | description |
+| --- | --- | --- |
+| <kbd>*</kbd>+<kbd>ctrl</kbd>+<kbd>u</kbd> | <kbd>shift</kbd>+<kbd>up</kbd> | |
+| <kbd>*</kbd>+<kbd>ctrl</kbd>+<kbd>e</kbd> | <kbd>shift</kbd>+<kbd>down</kbd> | |
 
 #### select to beginning / end of line
-- hyper+opt+f -> shift+home
-- hyper+opt+p -> shift+end
+| from | to | description |
+| --- | --- | --- |
+| <kbd>*</kbd>+<kbd>opt</kbd>+<kbd>f</kbd> | <kbd>shift</kbd>+<kbd>home</kbd> | |
+| <kbd>*</kbd>+<kbd>opt</kbd>+<kbd>p</kbd> | <kbd>shift</kbd>+<kbd>end</kbd> | |
 
 
 ### Hyper Manipulation
@@ -62,8 +82,10 @@ it uses the UNEO right-hand keys for navigation
 ##### buffer modification
 
 #### move line under cursor up / down
-- hyper+cmd+u -> shift+opt+up
-- hyper+cmd+e -> shift+opt+down
+| from | to | description |
+| --- | --- | --- |
+| <kbd>*</kbd>+<kbd>cmd</kbd>+<kbd>u</kbd> | <kbd>shift</kbd>+<kbd>opt</kbd>+<kbd>up</kbd> | |
+| <kbd>*</kbd>+<kbd>cmd</kbd>+<kbd>e</kbd> | <kbd>shift</kbd>+<kbd>opt</kbd>+<kbd>down</kbd> | |
 
 
 ### Hyper Cursor
@@ -71,6 +93,8 @@ it uses the UNEO right-hand keys for navigation
 ##### cursor modification
 
 #### duplicate cursor on the line above / below
+| from | to | description |
+| --- | --- | --- |
 
 
 ### Hyper Shift
@@ -78,29 +102,31 @@ it uses the UNEO right-hand keys for navigation
 ##### hyper should behave like shift -- most of the time
 
 #### hyper shift stuff
-- hyper+enter -> shift+enter
-- hyper+backspace -> shift+backspace
-- hyper+space -> shift+space
-- hyper+quote -> shift+quote
-- hyper+slash -> shift+slash
-- hyper+comma -> shift+comma
-- hyper+period -> shift+period
-- hyper+semicolon -> shift+semicolon
-- hyper+hyphen -> shift+hyphen
-- hyper+equal_sign -> shift+equal_sign
-- hyper+non_us_pound -> shift+non_us_pound
-- hyper+open_bracket -> shift+open_bracket
-- hyper+close_bracket -> shift+close_bracket
-- hyper+1 -> shift+1
-- hyper+2 -> shift+2
-- hyper+3 -> shift+3
-- hyper+4 -> shift+4
-- hyper+5 -> shift+5
-- hyper+6 -> shift+6
-- hyper+7 -> shift+7
-- hyper+8 -> shift+8
-- hyper+9 -> shift+9
-- hyper+0 -> shift+0
+| from | to | description |
+| --- | --- | --- |
+| <kbd>*</kbd>+<kbd>enter</kbd> | <kbd>shift</kbd>+<kbd>enter</kbd> | |
+| <kbd>*</kbd>+<kbd>backspace</kbd> | <kbd>shift</kbd>+<kbd>backspace</kbd> | |
+| <kbd>*</kbd>+<kbd>space</kbd> | <kbd>shift</kbd>+<kbd>space</kbd> | |
+| <kbd>*</kbd>+<kbd>quote</kbd> | <kbd>shift</kbd>+<kbd>quote</kbd> | |
+| <kbd>*</kbd>+<kbd>slash</kbd> | <kbd>shift</kbd>+<kbd>slash</kbd> | |
+| <kbd>*</kbd>+<kbd>comma</kbd> | <kbd>shift</kbd>+<kbd>comma</kbd> | |
+| <kbd>*</kbd>+<kbd>period</kbd> | <kbd>shift</kbd>+<kbd>period</kbd> | |
+| <kbd>*</kbd>+<kbd>semicolon</kbd> | <kbd>shift</kbd>+<kbd>semicolon</kbd> | |
+| <kbd>*</kbd>+<kbd>hyphen</kbd> | <kbd>shift</kbd>+<kbd>hyphen</kbd> | |
+| <kbd>*</kbd>+<kbd>equal_sign</kbd> | <kbd>shift</kbd>+<kbd>equal_sign</kbd> | |
+| <kbd>*</kbd>+<kbd>non_us_pound</kbd> | <kbd>shift</kbd>+<kbd>non_us_pound</kbd> | |
+| <kbd>*</kbd>+<kbd>open_bracket</kbd> | <kbd>shift</kbd>+<kbd>open_bracket</kbd> | |
+| <kbd>*</kbd>+<kbd>close_bracket</kbd> | <kbd>shift</kbd>+<kbd>close_bracket</kbd> | |
+| <kbd>*</kbd>+<kbd>1</kbd> | <kbd>shift</kbd>+<kbd>1</kbd> | |
+| <kbd>*</kbd>+<kbd>2</kbd> | <kbd>shift</kbd>+<kbd>2</kbd> | |
+| <kbd>*</kbd>+<kbd>3</kbd> | <kbd>shift</kbd>+<kbd>3</kbd> | |
+| <kbd>*</kbd>+<kbd>4</kbd> | <kbd>shift</kbd>+<kbd>4</kbd> | |
+| <kbd>*</kbd>+<kbd>5</kbd> | <kbd>shift</kbd>+<kbd>5</kbd> | |
+| <kbd>*</kbd>+<kbd>6</kbd> | <kbd>shift</kbd>+<kbd>6</kbd> | |
+| <kbd>*</kbd>+<kbd>7</kbd> | <kbd>shift</kbd>+<kbd>7</kbd> | |
+| <kbd>*</kbd>+<kbd>8</kbd> | <kbd>shift</kbd>+<kbd>8</kbd> | |
+| <kbd>*</kbd>+<kbd>9</kbd> | <kbd>shift</kbd>+<kbd>9</kbd> | |
+| <kbd>*</kbd>+<kbd>0</kbd> | <kbd>shift</kbd>+<kbd>0</kbd> | |
 
 
 ### Hyper Programmer
@@ -108,9 +134,11 @@ it uses the UNEO right-hand keys for navigation
 ##### atom specific programming commands
 
 #### special atom configuration
-- hyper+d -> cmd+d
-- hyper+cmd+d -> cmd+shift+d
-- hyper+opt+d -> ctrl+shift+k
-- hyper+cmd+backspace -> cmd+backspace
-- hyper+opt+backspace -> opt+backspace
+| from | to | description |
+| --- | --- | --- |
+| <kbd>*</kbd>+<kbd>d</kbd> | <kbd>cmd</kbd>+<kbd>d</kbd> | |
+| <kbd>*</kbd>+<kbd>cmd</kbd>+<kbd>d</kbd> | <kbd>cmd</kbd>+<kbd>shift</kbd>+<kbd>d</kbd> | |
+| <kbd>*</kbd>+<kbd>opt</kbd>+<kbd>d</kbd> | <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>k</kbd> | |
+| <kbd>*</kbd>+<kbd>cmd</kbd>+<kbd>backspace</kbd> | <kbd>cmd</kbd>+<kbd>backspace</kbd> | |
+| <kbd>*</kbd>+<kbd>opt</kbd>+<kbd>backspace</kbd> | <kbd>opt</kbd>+<kbd>backspace</kbd> | |
 
