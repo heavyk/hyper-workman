@@ -257,7 +257,6 @@ const transform_key = {
   ".": "period",
   ";": "semicolon",
 
-
   // osx weirdness
   "delete": "delete_forward",
   "enter": "return_or_enter",
@@ -274,12 +273,28 @@ const key_symbols = {
   "caps_lock": "⇪",
 
   // additional symbols
-  "hyper": "*",
+  "hyper": "⇪",
+  "up": "↑",
+  "left": "←",
+  "right": "→",
+  "down": "↓",
 }
 
-// allow for keys to be referenced by symbol, too
-Object.keys(key_symbols).forEach((key) => transform_key[key_symbols[key]] = key)
+// allow for keys to be referenced by symbol
+// and also reverse-map all transforms, too
+Object.keys(transform_key).forEach((key) => {
+  let t = transform_key[key]
+  let sk = key_symbols[key]
+  let st = key_symbols[t]
+  if (sk) key_symbols[key] = sk
+  if (st) key_symbols[key] = st
+  if (key.length === 1) key_symbols[t] = key
+  // console.log(key, '::', key_symbols[key], '=', key_symbols[transform_key[key]], transform_key[key])
+})
+// Object.keys(key_symbols).forEach((key) => transform_key[key_symbols[key]] = key)
+// Object.keys(transform_key).forEach((key) => key_symbols[transform_key[key]] = key_symbols[key])
 
+console.log(key_symbols)
 
 // ========================
 // ========================
@@ -319,11 +334,9 @@ function update_config (path, rules, selected = true) {
 
 function generate_manipulators (title, description, ...manipulators) {
   console.log('\n\n### ' + title)
-
   if (description) console.log('\n##### ' + description)
 
   manipulators = print_manipulators(manipulators)
-
   return { description, manipulators }
 }
 
@@ -365,7 +378,7 @@ function pretty_keys(str) {
 
   for (let key of keys) {
     if (key in MODIFIERS) kbd.push(key_symbols[key] || key)
-    else kbd.push(key)
+    else kbd.push(key_symbols[key] || key)
   }
 
   return `<kbd>${kbd.join('</kbd>+<kbd>')}</kbd>`
