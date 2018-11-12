@@ -146,6 +146,9 @@ setTimeout(() => {
         hyper("opt+d", "ctrl+shift+k"), // delete line in atom
         hyper("cmd+backspace", "cmd+backspace"), // delete until beginning of line
         hyper("opt+backspace", "opt+backspace"), // delete word
+        hyper("backspace", "delete_forward"), // delete one char in front
+        hyper("delete_forward", "option+delete_forward"), // delete one word in front
+        hyper("option+delete_forward", "cmd+delete_forward"), // delete till end of line
       ])
     ),
   ]
