@@ -267,6 +267,8 @@ const transform_key = {
   "backspace": "delete_or_backspace"
 }
 
+// most of these taken from:
+// http://xahlee.info/comp/unicode_computing_symbols.html
 const key_symbols = {
   // official apple symbols
   "command": "⌘",
@@ -276,11 +278,38 @@ const key_symbols = {
   "caps_lock": "⇪",
 
   // additional symbols
-  "hyper": "⇪",
+  "hyper": "✧",
+  "super": "◇",
+  "menu": "☰",
+  "alt": "⎇",
+
+  // standard directions
   "up": "↑",
   "left": "←",
   "right": "→",
   "down": "↓",
+
+  "page_up": "⇞",
+  "page_down": "⇟",
+  // these appear on the keyboard layout
+  "home": "⤒",
+  "end": "⤓",
+  // in help, it references these:
+  // "home": "↖",
+  // "end": "↘",
+  // these appear on older models (yet seem to make the most sense)
+  // "home": "⇤",
+  // "end": "⇥",
+
+  // standard keys
+  "delete": "⌦",
+  // "enter": "⏎",
+  "enter": "⌤",
+  "return": "↩",
+  "backspace": "⌫",
+  "clear": "⌧",
+
+  "print_screen": "⎙",
 }
 
 // allow for keys to be referenced by symbol
@@ -292,12 +321,8 @@ Object.keys(transform_key).forEach((key) => {
   if (sk) key_symbols[key] = sk
   if (st) key_symbols[key] = st
   if (key.length === 1) key_symbols[t] = key
-  // console.log(key, '::', key_symbols[key], '=', key_symbols[transform_key[key]], transform_key[key])
 })
-// Object.keys(key_symbols).forEach((key) => transform_key[key_symbols[key]] = key)
-// Object.keys(transform_key).forEach((key) => key_symbols[transform_key[key]] = key_symbols[key])
 
-console.log(key_symbols)
 
 // ========================
 // ========================

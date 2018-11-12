@@ -12,40 +12,40 @@ it uses the UNEO right-hand keys for navigation
 #### move up / down / left / right 1-char
 | from | to | description |
 | --- | --- | --- |
-| <kbd>⇪</kbd>+<kbd>u</kbd> | <kbd>↑</kbd> | |
-| <kbd>⇪</kbd>+<kbd>e</kbd> | <kbd>↓</kbd> | |
-| <kbd>⇪</kbd>+<kbd>n</kbd> | <kbd>←</kbd> | |
-| <kbd>⇪</kbd>+<kbd>o</kbd> | <kbd>→</kbd> | |
+| <kbd>✧</kbd>+<kbd>u</kbd> | <kbd>↑</kbd> | |
+| <kbd>✧</kbd>+<kbd>e</kbd> | <kbd>↓</kbd> | |
+| <kbd>✧</kbd>+<kbd>n</kbd> | <kbd>←</kbd> | |
+| <kbd>✧</kbd>+<kbd>o</kbd> | <kbd>→</kbd> | |
 
 #### normal jumping
 | from | to | description |
 | --- | --- | --- |
-| <kbd>⇪</kbd>+<kbd>⌘</kbd>+<kbd>f</kbd> | <kbd>page_up</kbd> | |
-| <kbd>⇪</kbd>+<kbd>⌘</kbd>+<kbd>p</kbd> | <kbd>page_down</kbd> | |
+| <kbd>✧</kbd>+<kbd>⌘</kbd>+<kbd>f</kbd> | <kbd>⇞</kbd> | |
+| <kbd>✧</kbd>+<kbd>⌘</kbd>+<kbd>p</kbd> | <kbd>⇟</kbd> | |
 
 #### move to beginning / end of line
 | from | to | description |
 | --- | --- | --- |
-| <kbd>⇪</kbd>+<kbd>⌘</kbd>+<kbd>n</kbd> | <kbd>home</kbd> | |
-| <kbd>⇪</kbd>+<kbd>⌘</kbd>+<kbd>o</kbd> | <kbd>end</kbd> | |
+| <kbd>✧</kbd>+<kbd>⌘</kbd>+<kbd>n</kbd> | <kbd>⤒</kbd> | |
+| <kbd>✧</kbd>+<kbd>⌘</kbd>+<kbd>o</kbd> | <kbd>⤓</kbd> | |
 
 #### move up / down 1-page
 | from | to | description |
 | --- | --- | --- |
-| <kbd>⇪</kbd>+<kbd>⌘</kbd>+<kbd>f</kbd> | <kbd>page_up</kbd> | |
-| <kbd>⇪</kbd>+<kbd>⌘</kbd>+<kbd>p</kbd> | <kbd>page_down</kbd> | |
+| <kbd>✧</kbd>+<kbd>⌘</kbd>+<kbd>f</kbd> | <kbd>⇞</kbd> | |
+| <kbd>✧</kbd>+<kbd>⌘</kbd>+<kbd>p</kbd> | <kbd>⇟</kbd> | |
 
 #### move up / down 1-paragraph
 | from | to | description |
 | --- | --- | --- |
-| <kbd>⇪</kbd>+<kbd>⌥</kbd>+<kbd>u</kbd> | <kbd>⌥</kbd>+<kbd>↑</kbd> | |
-| <kbd>⇪</kbd>+<kbd>⌥</kbd>+<kbd>e</kbd> | <kbd>⌥</kbd>+<kbd>↓</kbd> | |
+| <kbd>✧</kbd>+<kbd>⌥</kbd>+<kbd>u</kbd> | <kbd>⌥</kbd>+<kbd>↑</kbd> | |
+| <kbd>✧</kbd>+<kbd>⌥</kbd>+<kbd>e</kbd> | <kbd>⌥</kbd>+<kbd>↓</kbd> | |
 
 #### move left / right 1-word
 | from | to | description |
 | --- | --- | --- |
-| <kbd>⇪</kbd>+<kbd>⌥</kbd>+<kbd>n</kbd> | <kbd>⌥</kbd>+<kbd>←</kbd> | |
-| <kbd>⇪</kbd>+<kbd>⌥</kbd>+<kbd>o</kbd> | <kbd>⌥</kbd>+<kbd>→</kbd> | |
+| <kbd>✧</kbd>+<kbd>⌥</kbd>+<kbd>n</kbd> | <kbd>⌥</kbd>+<kbd>←</kbd> | |
+| <kbd>✧</kbd>+<kbd>⌥</kbd>+<kbd>o</kbd> | <kbd>⌥</kbd>+<kbd>→</kbd> | |
 
 
 ### Hyper Selection
@@ -55,26 +55,26 @@ it uses the UNEO right-hand keys for navigation
 #### normal 1-char selection left / right
 | from | to | description |
 | --- | --- | --- |
-| <kbd>⇪</kbd>+<kbd>^</kbd>+<kbd>n</kbd> | <kbd>⇧</kbd>+<kbd>←</kbd> | |
-| <kbd>⇪</kbd>+<kbd>^</kbd>+<kbd>o</kbd> | <kbd>⇧</kbd>+<kbd>→</kbd> | |
+| <kbd>✧</kbd>+<kbd>^</kbd>+<kbd>n</kbd> | <kbd>⇧</kbd>+<kbd>←</kbd> | |
+| <kbd>✧</kbd>+<kbd>^</kbd>+<kbd>o</kbd> | <kbd>⇧</kbd>+<kbd>→</kbd> | |
 
 #### select til beginning / end of word
 | from | to | description |
 | --- | --- | --- |
-| <kbd>⇪</kbd>+<kbd>^</kbd>+<kbd>n</kbd> | <kbd>⇧</kbd>+<kbd>⌥</kbd>+<kbd>←</kbd> | |
-| <kbd>⇪</kbd>+<kbd>^</kbd>+<kbd>o</kbd> | <kbd>⇧</kbd>+<kbd>⌥</kbd>+<kbd>→</kbd> | |
+| <kbd>✧</kbd>+<kbd>^</kbd>+<kbd>n</kbd> | <kbd>⇧</kbd>+<kbd>⌥</kbd>+<kbd>←</kbd> | |
+| <kbd>✧</kbd>+<kbd>^</kbd>+<kbd>o</kbd> | <kbd>⇧</kbd>+<kbd>⌥</kbd>+<kbd>→</kbd> | |
 
 #### selection up / down to line
 | from | to | description |
 | --- | --- | --- |
-| <kbd>⇪</kbd>+<kbd>^</kbd>+<kbd>u</kbd> | <kbd>⇧</kbd>+<kbd>↑</kbd> | |
-| <kbd>⇪</kbd>+<kbd>^</kbd>+<kbd>e</kbd> | <kbd>⇧</kbd>+<kbd>↓</kbd> | |
+| <kbd>✧</kbd>+<kbd>^</kbd>+<kbd>u</kbd> | <kbd>⇧</kbd>+<kbd>↑</kbd> | |
+| <kbd>✧</kbd>+<kbd>^</kbd>+<kbd>e</kbd> | <kbd>⇧</kbd>+<kbd>↓</kbd> | |
 
 #### select to beginning / end of line
 | from | to | description |
 | --- | --- | --- |
-| <kbd>⇪</kbd>+<kbd>⌥</kbd>+<kbd>f</kbd> | <kbd>⇧</kbd>+<kbd>home</kbd> | |
-| <kbd>⇪</kbd>+<kbd>⌥</kbd>+<kbd>p</kbd> | <kbd>⇧</kbd>+<kbd>end</kbd> | |
+| <kbd>✧</kbd>+<kbd>⌥</kbd>+<kbd>f</kbd> | <kbd>⇧</kbd>+<kbd>⤒</kbd> | |
+| <kbd>✧</kbd>+<kbd>⌥</kbd>+<kbd>p</kbd> | <kbd>⇧</kbd>+<kbd>⤓</kbd> | |
 
 
 ### Hyper Manipulation
@@ -84,8 +84,8 @@ it uses the UNEO right-hand keys for navigation
 #### move line under cursor up / down
 | from | to | description |
 | --- | --- | --- |
-| <kbd>⇪</kbd>+<kbd>⌘</kbd>+<kbd>u</kbd> | <kbd>⇧</kbd>+<kbd>⌥</kbd>+<kbd>↑</kbd> | |
-| <kbd>⇪</kbd>+<kbd>⌘</kbd>+<kbd>e</kbd> | <kbd>⇧</kbd>+<kbd>⌥</kbd>+<kbd>↓</kbd> | |
+| <kbd>✧</kbd>+<kbd>⌘</kbd>+<kbd>u</kbd> | <kbd>⇧</kbd>+<kbd>⌥</kbd>+<kbd>↑</kbd> | |
+| <kbd>✧</kbd>+<kbd>⌘</kbd>+<kbd>e</kbd> | <kbd>⇧</kbd>+<kbd>⌥</kbd>+<kbd>↓</kbd> | |
 
 
 ### Hyper Cursor
@@ -104,29 +104,29 @@ it uses the UNEO right-hand keys for navigation
 #### hyper shift stuff
 | from | to | description |
 | --- | --- | --- |
-| <kbd>⇪</kbd>+<kbd>enter</kbd> | <kbd>⇧</kbd>+<kbd>enter</kbd> | |
-| <kbd>⇪</kbd>+<kbd>backspace</kbd> | <kbd>⇧</kbd>+<kbd>backspace</kbd> | |
-| <kbd>⇪</kbd>+<kbd>space</kbd> | <kbd>⇧</kbd>+<kbd>space</kbd> | |
-| <kbd>⇪</kbd>+<kbd>'</kbd> | <kbd>⇧</kbd>+<kbd>'</kbd> | |
-| <kbd>⇪</kbd>+<kbd>/</kbd> | <kbd>⇧</kbd>+<kbd>/</kbd> | |
-| <kbd>⇪</kbd>+<kbd>,</kbd> | <kbd>⇧</kbd>+<kbd>,</kbd> | |
-| <kbd>⇪</kbd>+<kbd>.</kbd> | <kbd>⇧</kbd>+<kbd>.</kbd> | |
-| <kbd>⇪</kbd>+<kbd>;</kbd> | <kbd>⇧</kbd>+<kbd>;</kbd> | |
-| <kbd>⇪</kbd>+<kbd>-</kbd> | <kbd>⇧</kbd>+<kbd>-</kbd> | |
-| <kbd>⇪</kbd>+<kbd>=</kbd> | <kbd>⇧</kbd>+<kbd>=</kbd> | |
-| <kbd>⇪</kbd>+<kbd>\</kbd> | <kbd>⇧</kbd>+<kbd>\</kbd> | |
-| <kbd>⇪</kbd>+<kbd>[</kbd> | <kbd>⇧</kbd>+<kbd>[</kbd> | |
-| <kbd>⇪</kbd>+<kbd>]</kbd> | <kbd>⇧</kbd>+<kbd>]</kbd> | |
-| <kbd>⇪</kbd>+<kbd>1</kbd> | <kbd>⇧</kbd>+<kbd>1</kbd> | |
-| <kbd>⇪</kbd>+<kbd>2</kbd> | <kbd>⇧</kbd>+<kbd>2</kbd> | |
-| <kbd>⇪</kbd>+<kbd>3</kbd> | <kbd>⇧</kbd>+<kbd>3</kbd> | |
-| <kbd>⇪</kbd>+<kbd>4</kbd> | <kbd>⇧</kbd>+<kbd>4</kbd> | |
-| <kbd>⇪</kbd>+<kbd>5</kbd> | <kbd>⇧</kbd>+<kbd>5</kbd> | |
-| <kbd>⇪</kbd>+<kbd>6</kbd> | <kbd>⇧</kbd>+<kbd>6</kbd> | |
-| <kbd>⇪</kbd>+<kbd>7</kbd> | <kbd>⇧</kbd>+<kbd>7</kbd> | |
-| <kbd>⇪</kbd>+<kbd>8</kbd> | <kbd>⇧</kbd>+<kbd>8</kbd> | |
-| <kbd>⇪</kbd>+<kbd>9</kbd> | <kbd>⇧</kbd>+<kbd>9</kbd> | |
-| <kbd>⇪</kbd>+<kbd>0</kbd> | <kbd>⇧</kbd>+<kbd>0</kbd> | |
+| <kbd>✧</kbd>+<kbd>⏎</kbd> | <kbd>⇧</kbd>+<kbd>⏎</kbd> | |
+| <kbd>✧</kbd>+<kbd>⌫</kbd> | <kbd>⇧</kbd>+<kbd>⌫</kbd> | |
+| <kbd>✧</kbd>+<kbd>space</kbd> | <kbd>⇧</kbd>+<kbd>space</kbd> | |
+| <kbd>✧</kbd>+<kbd>'</kbd> | <kbd>⇧</kbd>+<kbd>'</kbd> | |
+| <kbd>✧</kbd>+<kbd>/</kbd> | <kbd>⇧</kbd>+<kbd>/</kbd> | |
+| <kbd>✧</kbd>+<kbd>,</kbd> | <kbd>⇧</kbd>+<kbd>,</kbd> | |
+| <kbd>✧</kbd>+<kbd>.</kbd> | <kbd>⇧</kbd>+<kbd>.</kbd> | |
+| <kbd>✧</kbd>+<kbd>;</kbd> | <kbd>⇧</kbd>+<kbd>;</kbd> | |
+| <kbd>✧</kbd>+<kbd>-</kbd> | <kbd>⇧</kbd>+<kbd>-</kbd> | |
+| <kbd>✧</kbd>+<kbd>=</kbd> | <kbd>⇧</kbd>+<kbd>=</kbd> | |
+| <kbd>✧</kbd>+<kbd>\</kbd> | <kbd>⇧</kbd>+<kbd>\</kbd> | |
+| <kbd>✧</kbd>+<kbd>[</kbd> | <kbd>⇧</kbd>+<kbd>[</kbd> | |
+| <kbd>✧</kbd>+<kbd>]</kbd> | <kbd>⇧</kbd>+<kbd>]</kbd> | |
+| <kbd>✧</kbd>+<kbd>1</kbd> | <kbd>⇧</kbd>+<kbd>1</kbd> | |
+| <kbd>✧</kbd>+<kbd>2</kbd> | <kbd>⇧</kbd>+<kbd>2</kbd> | |
+| <kbd>✧</kbd>+<kbd>3</kbd> | <kbd>⇧</kbd>+<kbd>3</kbd> | |
+| <kbd>✧</kbd>+<kbd>4</kbd> | <kbd>⇧</kbd>+<kbd>4</kbd> | |
+| <kbd>✧</kbd>+<kbd>5</kbd> | <kbd>⇧</kbd>+<kbd>5</kbd> | |
+| <kbd>✧</kbd>+<kbd>6</kbd> | <kbd>⇧</kbd>+<kbd>6</kbd> | |
+| <kbd>✧</kbd>+<kbd>7</kbd> | <kbd>⇧</kbd>+<kbd>7</kbd> | |
+| <kbd>✧</kbd>+<kbd>8</kbd> | <kbd>⇧</kbd>+<kbd>8</kbd> | |
+| <kbd>✧</kbd>+<kbd>9</kbd> | <kbd>⇧</kbd>+<kbd>9</kbd> | |
+| <kbd>✧</kbd>+<kbd>0</kbd> | <kbd>⇧</kbd>+<kbd>0</kbd> | |
 
 
 ### Hyper Programmer
@@ -136,9 +136,12 @@ it uses the UNEO right-hand keys for navigation
 #### special atom configuration
 | from | to | description |
 | --- | --- | --- |
-| <kbd>⇪</kbd>+<kbd>d</kbd> | <kbd>⌘</kbd>+<kbd>d</kbd> | |
-| <kbd>⇪</kbd>+<kbd>⌘</kbd>+<kbd>d</kbd> | <kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>d</kbd> | |
-| <kbd>⇪</kbd>+<kbd>⌥</kbd>+<kbd>d</kbd> | <kbd>^</kbd>+<kbd>⇧</kbd>+<kbd>k</kbd> | |
-| <kbd>⇪</kbd>+<kbd>⌘</kbd>+<kbd>backspace</kbd> | <kbd>⌘</kbd>+<kbd>backspace</kbd> | |
-| <kbd>⇪</kbd>+<kbd>⌥</kbd>+<kbd>backspace</kbd> | <kbd>⌥</kbd>+<kbd>backspace</kbd> | |
+| <kbd>✧</kbd>+<kbd>d</kbd> | <kbd>⌘</kbd>+<kbd>d</kbd> | |
+| <kbd>✧</kbd>+<kbd>⌘</kbd>+<kbd>d</kbd> | <kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>d</kbd> | |
+| <kbd>✧</kbd>+<kbd>⌥</kbd>+<kbd>d</kbd> | <kbd>^</kbd>+<kbd>⇧</kbd>+<kbd>k</kbd> | |
+| <kbd>✧</kbd>+<kbd>⌘</kbd>+<kbd>⌫</kbd> | <kbd>⌘</kbd>+<kbd>⌫</kbd> | |
+| <kbd>✧</kbd>+<kbd>⌥</kbd>+<kbd>⌫</kbd> | <kbd>⌥</kbd>+<kbd>⌫</kbd> | |
+| <kbd>✧</kbd>+<kbd>⌫</kbd> | <kbd>delete_forward</kbd> | |
+| <kbd>✧</kbd>+<kbd>delete_forward</kbd> | <kbd>⌥</kbd>+<kbd>delete_forward</kbd> | |
+| <kbd>✧</kbd>+<kbd>⌥</kbd>+<kbd>delete_forward</kbd> | <kbd>⌘</kbd>+<kbd>delete_forward</kbd> | |
 
