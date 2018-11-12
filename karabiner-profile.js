@@ -4,12 +4,10 @@ const ASSET_PATH = `${process.env.HOME}/.config/karabiner/assets/complex_modific
 const fs = require('fs')
 const util = require('util')
 
-let karabiner = JSON.parse(
-  fs.readFileSync(CONFIG_PATH, 'utf8')
-)
+// TODO:
+// make keyboard layout svg
 
-// NEED:
-// capture stdout and record as the README
+// KEY IDEAS
 // hyper+command+{f,p} = select(?) to home/end
 // hyper+ctrl+{f,p} = select to home/end
 // hyper+option+{f,p} = page-up / page-down ???
@@ -21,8 +19,12 @@ setTimeout(() => {
     readme.push(txt)
   }
 
-  console.log('# HYPER-WorkMan (UNEO)')
-  console.log('a super cool keyboard configuration')
+  // console.log('# HYPER-WorkMan (UNEO)')
+  console.log('# hyper-workman')
+  console.log(`a super cool keyboard configuration inspired by [Enhanced CapsLock](https://github.com/Vonng/Capslock) and then tailored for the [Workman Keyboard Layout](https://workmanlayout.org/).`)
+  console.log('')
+  console.log(`it uses the UNEO right-hand keys for navigation`)
+  console.log('---')
   let rules = [
     // the main rule
     {
@@ -163,6 +165,7 @@ setTimeout(() => {
   process.stdout.write = old_stdout
   console.log('README: '+Buffer.byteLength(README)+' bytes')
   console.log('json: '+Buffer.byteLength(json)+' bytes')
+  console.log('')
 
   fs.writeFileSync(`${__dirname}/hyper_workman.json`, json)
   console.log(`wrote ${__dirname}/hyper_workman.json`)
@@ -176,6 +179,7 @@ setTimeout(() => {
       console.log(`wrote ${ASSET_PATH}/hyper_workman.json`)
     }
 
+    console.log('')
     update_config(CONFIG_PATH, rules, profile === 'update_local' || profile === 'true' || profile)
     // console.log(`updated ${CONFIG_PATH}`)
   } else {

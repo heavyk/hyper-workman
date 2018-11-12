@@ -1,5 +1,8 @@
-# HYPER-WorkMan (UNEO)
-a super cool keyboard configuration
+# hyper-workman
+a super cool keyboard configuration inspired by [Enhanced CapsLock](https://github.com/Vonng/Capslock) and then tailored for the [Workman Keyboard Layout](https://workmanlayout.org/).
+
+it uses the UNEO right-hand keys for navigation
+---
 
 
 ### Hyper Navigation
