@@ -22,15 +22,34 @@ setTimeout(() => {
   console.log(`it uses the UNEO right-hand keys for navigation`)
   console.log('---')
   let rules = [
+    // the second rule
+    {
+      description: 'Hyper + Tab = Hyper Selector',
+      manipulators: [{
+        from: {
+          key_code: 'tab',
+          modifiers: { optional: [ 'any' ], mandatory: [ 'right_command', 'right_control', 'right_option', 'right_shift' ] }
+        },
+        to: [{
+          lazy: true,
+          key_code: 'left_shift',
+          modifiers: [ 'right_command', 'right_control', 'right_option', 'right_shift' ]
+        }],
+        parameters: { "basic.to_if_alone_timeout_milliseconds": 200 }, // any faster, and it's too fast to cmd+tab between windows
+        to_if_alone: [{ key_code: 'tab' }],
+        type: 'basic'
+      }]
+    },
     // the main rule
     {
       description: 'CapsLock to Hyper/Escape',
       manipulators: [{
         from: {
           key_code: 'caps_lock',
-          modifiers: { optional: ['any'] }
+          modifiers: { optional: [ 'any' ] }
         },
         to: [{
+          lazy: true,
           key_code: 'right_shift',
           modifiers: [ 'right_command', 'right_control', 'right_option' ]
         }],
@@ -39,86 +58,107 @@ setTimeout(() => {
       }]
     },
 
+
     generate_manipulators(
       "Hyper Navigation",
       "move the cursor around (UNEO configuration)",
 
       hyper_group("move 1-char", [
-        hyper("u", "up", "move up 1-char"),
-        hyper("e", "down", "move down 1-char"),
-        hyper("n", "left", "move left 1-char"),
-        hyper("o", "right", "move right 1-char"),
-      ]),
-
-      hyper_group("normal jumping", [
-        // hyper("f", "home"),
-        // hyper("p", "end"),
-        hyper("cmd+f", "page_up"),
-        hyper("cmd+p", "page_down"),
+        hyper_("u", "up", "move up 1-char"),
+        hyper_("e", "down", "move down 1-char"),
+        hyper_("n", "left", "move left 1-char"),
+        hyper_("o", "right", "move right 1-char"),
       ]),
 
       hyper_group("move to beginning / end of line", [
-        hyper("cmd+n", "home"),
-        hyper("cmd+o", "end"),
+        hyper_("cmd+n", "home"),
+        hyper_("cmd+o", "end"),
       ]),
 
       hyper_group("move up / down 1-page", [
-        hyper("cmd+f", "page_up"),
-        hyper("cmd+p", "page_down"),
+        hyper_("cmd+f", "page_up"),
+        hyper_("cmd+p", "page_down"),
       ]),
 
       hyper_group("move up / down 1-paragraph", [
-        hyper("opt+u", "opt+up"),
-        hyper("opt+e", "opt+down"),
+        hyper_("opt+u", "opt+up"),
+        hyper_("opt+e", "opt+down"),
       ]),
 
       hyper_group("move left / right 1-word", [
-        hyper("opt+n", "opt+left"),
-        hyper("opt+o", "opt+right"),
-      ])
+        hyper_("opt+n", "opt+left"),
+        hyper_("opt+o", "opt+right"),
+      ]),
+
+      // I kind of don't know what to do with this.
+      // it seems like the home and end are maybe a bit clunky, since cmd+(left/right) go to home end
+      // probably, I will want to make it some sort of smart movement control thing ... dunno yet
+      hyper_group("normal jumping", [
+        // hyper_("f", "home"),
+        // hyper_("p", "end"),
+        hyper_("cmd+f", "page_up"),
+        hyper_("cmd+p", "page_down"),
+      ]),
     ),
 
     generate_manipulators(
-      "Hyper Selection",
-      "selecting chars under the cursor",
+      "Super Selection",
+      "selecting chars under the cursor with super",
+
+      hyper_group("select up / down one line", [
+        super_("u", "shift+up"),
+        super_("e", "shift+down"),
+      ]),
 
       hyper_group("normal 1-char selection left / right", [
-        hyper("ctrl+n", "shift+left"),
-        hyper("ctrl+o", "shift+right"),
-      ]),
-
-      hyper_group("select til beginning / end of word", [
-        hyper("ctrl+n", "shift+opt+left"),
-        hyper("ctrl+o", "shift+opt+right"),
-      ]),
-
-      hyper_group("selection up / down to line", [
-        hyper("ctrl+u", "shift+up"),
-        hyper("ctrl+e", "shift+down"),
+        super_("n", "shift+left"),
+        super_("o", "shift+right"),
       ]),
 
       hyper_group("select to beginning / end of line", [
-        hyper("opt+f", "shift+home"),
-        hyper("opt+p", "shift+end"),
-      ])
+        super_("cmd+n", "shift+home"),
+        super_("cmd+o", "shift+end"),
+      ]),
+
+      hyper_group("select up / down 1-page", [
+        super_("cmd+f", "shift+page_up"),
+        super_("cmd+p", "shift+page_down"),
+      ]),
+
+      hyper_group("select up / down 1-paragraph", [
+        super_("opt+u", "shift+opt+up"),
+        super_("opt+e", "shift+opt+down"),
+      ]),
+
+      hyper_group("select til beginning / end of word", [
+        super_("opt+n", "shift+opt+left"),
+        super_("opt+o", "shift+opt+right"),
+      ]),
+
+      // hyper_group("select til beginning / end of word", [
+      //   super_("opt+n", "shift+opt+left"),
+      //   super_("opt+o", "shift+opt+right"),
+      // ]),
     ),
 
     generate_manipulators(
       "Hyper Manipulation",
       "buffer modification",
       hyper_group("move line under cursor up / down", [
-        hyper("cmd+u", "shift+opt+up"),
-        hyper("cmd+e", "shift+opt+down"),
-      ])
+        hyper_("cmd+u", "ctrl+cmd+up"),
+        hyper_("cmd+e", "ctrl+cmd+down"),
+        hyper_("d", "backspace", "backspace shortcut"), // TODO: make this smart??
+        super_("d", "delete", "delete selection"), // TODO: make this smart??
+      ]),
     ),
 
     generate_manipulators(
       "Hyper Cursor",
       "cursor modification",
       hyper_group("duplicate cursor on the line above / below", [
-        hyper("opt+u", "shift+ctrl+up"),
-        hyper("opt+e", "shift+ctrl+down"),
-      ])
+        super_("ctrl+u", "shift+ctrl+up"),
+        super_("ctrl+e", "shift+ctrl+down"),
+      ]),
     ),
 
     generate_manipulators(
@@ -131,9 +171,9 @@ setTimeout(() => {
         // backspace - ???
         // enter - dunno... it's kinda far from where the hand sits...
         "enter", "backspace", "space",
-        "hyphen", "equal_sign", "non_us_pound",
+        "semicolon", "equal_sign", "non_us_pound",
         1, 2, 3, 4, 5, 6, 7, 8, 9, 0
-      ].map((key) => hyper(key, 'shift+'+key, key+'')))
+      ].map((key) => hyper_(key, 'shift+'+key, key+'')))
     ),
 
     // generate_manipulators(
@@ -142,35 +182,37 @@ setTimeout(() => {
     //   hyper_group("hyper command stuff", [
     //     "slash", // hyper+/ should toggle comment
     //     "open_bracket", "close_bracket", // hyper+[] should indent / dedent
-    //   ].map((key) => hyper(key, 'cmd+'+key)))
+    //   ].map((key) => hyper_(key, 'cmd+'+key)))
     // ),
 
     generate_manipulators(
       "Hyper Normal",
       "hyper should not modify these keys' behaviour",
       hyper_group("hyper normal keys", [
-        "quote", "comma", "period", "semicolon",
-      ].map((key) => hyper(key, key)))
+        "quote", "comma", "period",
+      ].map((key) => hyper_(key, key, key+'')))
     ),
 
     generate_manipulators(
       "Hyper Atom",
       "atom specific programming commands",
       hyper_group("special atom configuration", [
-        hyper("d", "cmd+d", "select next instance of selected"),
-        hyper("cmd+d", "cmd+shift+d", "duplicate line in atom"),
+        // hyper_("d", "cmd+d", "select next instance of selected"),
+        super_("space", "cmd+d", "select next instance of selected"),
+        hyper_("cmd+d", "cmd+shift+d", "duplicate line in atom"),
+        super_("cmd+d", "cmd+shift+d", "duplicate line in atom"),
       ]),
 
       hyper_group("common atom keys", [
-        hyper("opt+d", "ctrl+shift+k", "delete line in atom"),
-        hyper("cmd+backspace", "cmd+backspace", "delete until beginning of line"),
-        hyper("opt+backspace", "opt+backspace", "delete word"),
-        hyper("backspace", "delete_forward", "delete one char in front"),
-        hyper("delete_forward", "option+delete_forward", "delete one word in front"),
-        hyper("option+delete_forward", "cmd+delete_forward", "delete till end of line"),
-        hyper("/", "cmd+/", "toggle comment"),
-        hyper("[", "cmd+[", "dedent line"),
-        hyper("]", "cmd+]", "indent line"),
+        hyper_("opt+d", "ctrl+shift+k", "delete line in atom"),
+        hyper_("cmd+backspace", "cmd+backspace", "delete until beginning of line"),
+        hyper_("opt+backspace", "opt+backspace", "delete word"),
+        hyper_("backspace", "delete_forward", "delete one char in front"),
+        hyper_("delete_forward", "option+delete_forward", "delete one word in front"),
+        hyper_("option+delete_forward", "cmd+delete_forward", "delete till end of line"),
+        hyper_("/", "cmd+/", "toggle comment"),
+        hyper_("[", "cmd+[", "dedent line"),
+        hyper_("]", "cmd+]", "indent line"),
       ])
     ),
   ]
@@ -351,8 +393,12 @@ Object.keys(transform_key).forEach((key) => {
 
 
 const MODIFIERS = {
-  hyper: ['right_command', 'right_control', 'right_shift', 'right_option']
-  // ... (TODO: add more???)
+  hyper: ['right_command', 'right_control', 'right_shift', 'right_option'],
+  super: ['right_command', 'right_control', 'right_shift', 'right_option', 'left_shift'],
+  // maybe in the future, I want to add a 'menu' command.
+  // I'm thinking that this feature addition would be a part of a more complete package ...
+  // I'm thinking like a full UI and all sorts of stuff
+  // I'd be sweet if the tilde button activated a UI menu or something...
 }
 
 // for each modifier, add its value a concatenatable array
@@ -443,9 +489,9 @@ function hyper_group (heading, manipulators) {
   return {heading, manipulators}
 }
 
-function hyper (from, to, opts = {}) {
+function hyper_ (from, to, opts = {}) {
   // TODO: in case of from/to being an object
-  from = 'hyper+' + from
+  from = (opts.super ? 'super+' : 'hyper+') + from
   let desc = typeof opts === 'string' ? ` (${opts})`
     : typeof opts.description === 'string' ? ` (${opts.description})`
     : ''
@@ -455,6 +501,12 @@ function hyper (from, to, opts = {}) {
     to: [ get_key(to) ],
     type: 'basic'
   }
+}
+
+function super_ (from, to, opts = {}) {
+  if (typeof opts === 'string') opts = { description: opts }
+  opts.super = true
+  return hyper_(from, to, opts)
 }
 
 function get_key (str, mandatory = false) {

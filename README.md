@@ -17,12 +17,6 @@ it uses the UNEO right-hand keys for navigation
 | <kbd>✧</kbd>+<kbd>n</kbd> | <kbd>←</kbd> | *move left 1-char* |
 | <kbd>✧</kbd>+<kbd>o</kbd> | <kbd>→</kbd> | *move right 1-char* |
 
-#### normal jumping
-| from | to |
-| --- | --- |
-| <kbd>✧</kbd>+<kbd>⌘</kbd>+<kbd>f</kbd> | <kbd>⇞</kbd> |
-| <kbd>✧</kbd>+<kbd>⌘</kbd>+<kbd>p</kbd> | <kbd>⇟</kbd> |
-
 #### move to beginning / end of line
 | from | to |
 | --- | --- |
@@ -47,34 +41,52 @@ it uses the UNEO right-hand keys for navigation
 | <kbd>✧</kbd>+<kbd>⌥</kbd>+<kbd>n</kbd> | <kbd>⌥</kbd>+<kbd>←</kbd> |
 | <kbd>✧</kbd>+<kbd>⌥</kbd>+<kbd>o</kbd> | <kbd>⌥</kbd>+<kbd>→</kbd> |
 
+#### normal jumping
+| from | to |
+| --- | --- |
+| <kbd>✧</kbd>+<kbd>⌘</kbd>+<kbd>f</kbd> | <kbd>⇞</kbd> |
+| <kbd>✧</kbd>+<kbd>⌘</kbd>+<kbd>p</kbd> | <kbd>⇟</kbd> |
 
-### Hyper Selection
 
-##### selecting chars under the cursor
+### Super Selection
+
+##### selecting chars under the cursor with super
+
+#### select up / down one line
+| from | to |
+| --- | --- |
+| <kbd>◇</kbd>+<kbd>u</kbd> | <kbd>⇧</kbd>+<kbd>↑</kbd> |
+| <kbd>◇</kbd>+<kbd>e</kbd> | <kbd>⇧</kbd>+<kbd>↓</kbd> |
 
 #### normal 1-char selection left / right
 | from | to |
 | --- | --- |
-| <kbd>✧</kbd>+<kbd>^</kbd>+<kbd>n</kbd> | <kbd>⇧</kbd>+<kbd>←</kbd> |
-| <kbd>✧</kbd>+<kbd>^</kbd>+<kbd>o</kbd> | <kbd>⇧</kbd>+<kbd>→</kbd> |
-
-#### select til beginning / end of word
-| from | to |
-| --- | --- |
-| <kbd>✧</kbd>+<kbd>^</kbd>+<kbd>n</kbd> | <kbd>⇧</kbd>+<kbd>⌥</kbd>+<kbd>←</kbd> |
-| <kbd>✧</kbd>+<kbd>^</kbd>+<kbd>o</kbd> | <kbd>⇧</kbd>+<kbd>⌥</kbd>+<kbd>→</kbd> |
-
-#### selection up / down to line
-| from | to |
-| --- | --- |
-| <kbd>✧</kbd>+<kbd>^</kbd>+<kbd>u</kbd> | <kbd>⇧</kbd>+<kbd>↑</kbd> |
-| <kbd>✧</kbd>+<kbd>^</kbd>+<kbd>e</kbd> | <kbd>⇧</kbd>+<kbd>↓</kbd> |
+| <kbd>◇</kbd>+<kbd>n</kbd> | <kbd>⇧</kbd>+<kbd>←</kbd> |
+| <kbd>◇</kbd>+<kbd>o</kbd> | <kbd>⇧</kbd>+<kbd>→</kbd> |
 
 #### select to beginning / end of line
 | from | to |
 | --- | --- |
-| <kbd>✧</kbd>+<kbd>⌥</kbd>+<kbd>f</kbd> | <kbd>⇧</kbd>+<kbd>⤒</kbd> |
-| <kbd>✧</kbd>+<kbd>⌥</kbd>+<kbd>p</kbd> | <kbd>⇧</kbd>+<kbd>⤓</kbd> |
+| <kbd>◇</kbd>+<kbd>⌘</kbd>+<kbd>n</kbd> | <kbd>⇧</kbd>+<kbd>⤒</kbd> |
+| <kbd>◇</kbd>+<kbd>⌘</kbd>+<kbd>o</kbd> | <kbd>⇧</kbd>+<kbd>⤓</kbd> |
+
+#### select up / down 1-page
+| from | to |
+| --- | --- |
+| <kbd>◇</kbd>+<kbd>⌘</kbd>+<kbd>f</kbd> | <kbd>⇧</kbd>+<kbd>⇞</kbd> |
+| <kbd>◇</kbd>+<kbd>⌘</kbd>+<kbd>p</kbd> | <kbd>⇧</kbd>+<kbd>⇟</kbd> |
+
+#### select up / down 1-paragraph
+| from | to |
+| --- | --- |
+| <kbd>◇</kbd>+<kbd>⌥</kbd>+<kbd>u</kbd> | <kbd>⇧</kbd>+<kbd>⌥</kbd>+<kbd>↑</kbd> |
+| <kbd>◇</kbd>+<kbd>⌥</kbd>+<kbd>e</kbd> | <kbd>⇧</kbd>+<kbd>⌥</kbd>+<kbd>↓</kbd> |
+
+#### select til beginning / end of word
+| from | to |
+| --- | --- |
+| <kbd>◇</kbd>+<kbd>⌥</kbd>+<kbd>n</kbd> | <kbd>⇧</kbd>+<kbd>⌥</kbd>+<kbd>←</kbd> |
+| <kbd>◇</kbd>+<kbd>⌥</kbd>+<kbd>o</kbd> | <kbd>⇧</kbd>+<kbd>⌥</kbd>+<kbd>→</kbd> |
 
 
 ### Hyper Manipulation
@@ -82,10 +94,12 @@ it uses the UNEO right-hand keys for navigation
 ##### buffer modification
 
 #### move line under cursor up / down
-| from | to |
-| --- | --- |
-| <kbd>✧</kbd>+<kbd>⌘</kbd>+<kbd>u</kbd> | <kbd>⇧</kbd>+<kbd>⌥</kbd>+<kbd>↑</kbd> |
-| <kbd>✧</kbd>+<kbd>⌘</kbd>+<kbd>e</kbd> | <kbd>⇧</kbd>+<kbd>⌥</kbd>+<kbd>↓</kbd> |
+| from | to | description |
+| --- | --- | --- |
+| <kbd>✧</kbd>+<kbd>⌘</kbd>+<kbd>u</kbd> | <kbd>^</kbd>+<kbd>⌘</kbd>+<kbd>↑</kbd> |
+| <kbd>✧</kbd>+<kbd>⌘</kbd>+<kbd>e</kbd> | <kbd>^</kbd>+<kbd>⌘</kbd>+<kbd>↓</kbd> |
+| <kbd>✧</kbd>+<kbd>d</kbd> | <kbd>⌫</kbd> | *backspace shortcut* |
+| <kbd>◇</kbd>+<kbd>d</kbd> | <kbd>⌦</kbd> | *delete selection* |
 
 
 ### Hyper Cursor
@@ -95,8 +109,8 @@ it uses the UNEO right-hand keys for navigation
 #### duplicate cursor on the line above / below
 | from | to |
 | --- | --- |
-| <kbd>✧</kbd>+<kbd>⌥</kbd>+<kbd>u</kbd> | <kbd>⇧</kbd>+<kbd>^</kbd>+<kbd>↑</kbd> |
-| <kbd>✧</kbd>+<kbd>⌥</kbd>+<kbd>e</kbd> | <kbd>⇧</kbd>+<kbd>^</kbd>+<kbd>↓</kbd> |
+| <kbd>◇</kbd>+<kbd>^</kbd>+<kbd>u</kbd> | <kbd>⇧</kbd>+<kbd>^</kbd>+<kbd>↑</kbd> |
+| <kbd>◇</kbd>+<kbd>^</kbd>+<kbd>e</kbd> | <kbd>⇧</kbd>+<kbd>^</kbd>+<kbd>↓</kbd> |
 
 
 ### Hyper Shift
@@ -109,7 +123,7 @@ it uses the UNEO right-hand keys for navigation
 | <kbd>✧</kbd>+<kbd>⌤</kbd> | <kbd>⇧</kbd>+<kbd>⌤</kbd> | *enter* |
 | <kbd>✧</kbd>+<kbd>⌫</kbd> | <kbd>⇧</kbd>+<kbd>⌫</kbd> | *backspace* |
 | <kbd>✧</kbd>+<kbd>space</kbd> | <kbd>⇧</kbd>+<kbd>space</kbd> | *space* |
-| <kbd>✧</kbd>+<kbd>-</kbd> | <kbd>⇧</kbd>+<kbd>-</kbd> | *hyphen* |
+| <kbd>✧</kbd>+<kbd>;</kbd> | <kbd>⇧</kbd>+<kbd>;</kbd> | *semicolon* |
 | <kbd>✧</kbd>+<kbd>=</kbd> | <kbd>⇧</kbd>+<kbd>=</kbd> | *equal_sign* |
 | <kbd>✧</kbd>+<kbd>\</kbd> | <kbd>⇧</kbd>+<kbd>\</kbd> | *non_us_pound* |
 | <kbd>✧</kbd>+<kbd>1</kbd> | <kbd>⇧</kbd>+<kbd>1</kbd> | *1* |
@@ -129,12 +143,11 @@ it uses the UNEO right-hand keys for navigation
 ##### hyper should not modify these keys' behaviour
 
 #### hyper normal keys
-| from | to |
-| --- | --- |
-| <kbd>✧</kbd>+<kbd>'</kbd> | <kbd>'</kbd> |
-| <kbd>✧</kbd>+<kbd>,</kbd> | <kbd>,</kbd> |
-| <kbd>✧</kbd>+<kbd>.</kbd> | <kbd>.</kbd> |
-| <kbd>✧</kbd>+<kbd>;</kbd> | <kbd>;</kbd> |
+| from | to | description |
+| --- | --- | --- |
+| <kbd>✧</kbd>+<kbd>'</kbd> | <kbd>'</kbd> | *quote* |
+| <kbd>✧</kbd>+<kbd>,</kbd> | <kbd>,</kbd> | *comma* |
+| <kbd>✧</kbd>+<kbd>.</kbd> | <kbd>.</kbd> | *period* |
 
 
 ### Hyper Atom
@@ -144,8 +157,9 @@ it uses the UNEO right-hand keys for navigation
 #### special atom configuration
 | from | to | description |
 | --- | --- | --- |
-| <kbd>✧</kbd>+<kbd>d</kbd> | <kbd>⌘</kbd>+<kbd>d</kbd> | *select next instance of selected* |
+| <kbd>◇</kbd>+<kbd>space</kbd> | <kbd>⌘</kbd>+<kbd>d</kbd> | *select next instance of selected* |
 | <kbd>✧</kbd>+<kbd>⌘</kbd>+<kbd>d</kbd> | <kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>d</kbd> | *duplicate line in atom* |
+| <kbd>◇</kbd>+<kbd>⌘</kbd>+<kbd>d</kbd> | <kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>d</kbd> | *duplicate line in atom* |
 
 #### common atom keys
 | from | to | description |
