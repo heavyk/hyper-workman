@@ -132,7 +132,6 @@ it uses the UNEO right-hand keys for navigation
 | <kbd>✧</kbd>+<kbd>]</kbd> | <kbd>⇧</kbd>+<kbd>]</kbd> | *close_bracket* |
 | <kbd>✧</kbd>+<kbd>⌤</kbd> | <kbd>⇧</kbd>+<kbd>⌤</kbd> | *enter* |
 | <kbd>✧</kbd>+<kbd>⌫</kbd> | <kbd>⇧</kbd>+<kbd>⌫</kbd> | *backspace* |
-| <kbd>✧</kbd>+<kbd>space</kbd> | <kbd>⇧</kbd>+<kbd>space</kbd> | *space* |
 | <kbd>✧</kbd>+<kbd>;</kbd> | <kbd>⇧</kbd>+<kbd>;</kbd> | *semicolon* |
 | <kbd>✧</kbd>+<kbd>=</kbd> | <kbd>⇧</kbd>+<kbd>=</kbd> | *equal_sign* |
 | <kbd>✧</kbd>+<kbd>'</kbd> | <kbd>⇧</kbd>+<kbd>'</kbd> | *quote* |
@@ -147,6 +146,19 @@ it uses the UNEO right-hand keys for navigation
 | <kbd>✧</kbd>+<kbd>8</kbd> | <kbd>⇧</kbd>+<kbd>8</kbd> | *8* |
 | <kbd>✧</kbd>+<kbd>9</kbd> | <kbd>⇧</kbd>+<kbd>9</kbd> | *9* |
 | <kbd>✧</kbd>+<kbd>0</kbd> | <kbd>⇧</kbd>+<kbd>0</kbd> | *0* |
+
+
+### Hyper Command
+
+##### sometimes, hyper should also behave like command
+
+#### essential commands
+| from | to | description |
+| --- | --- | --- |
+| <kbd>✧</kbd>+<kbd>s</kbd> | <kbd>⌘</kbd>+<kbd>s</kbd> | *save* |
+| <kbd>✧</kbd>+<kbd>a</kbd> | <kbd>⌘</kbd>+<kbd>a</kbd> | *select-all* |
+| <kbd>✧</kbd>+<kbd>z</kbd> | <kbd>⌘</kbd>+<kbd>z</kbd> | *undo* |
+| <kbd>✧</kbd>+<kbd>⌘</kbd>+<kbd>z</kbd> | <kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>z</kbd> | *redo* |
 
 
 ### Hyper Normal
@@ -169,6 +181,7 @@ it uses the UNEO right-hand keys for navigation
 #### special atom configuration
 | from | to | description |
 | --- | --- | --- |
+| <kbd>◇</kbd>+<kbd>space</kbd> | <kbd>⌘</kbd>+<kbd>d</kbd> | *select next instance of selected* |
 | <kbd>◇</kbd>+<kbd>p</kbd> | <kbd>⌘</kbd>+<kbd>d</kbd> | *select next instance of selected* |
 | <kbd>◇</kbd>+<kbd>⌘</kbd>+<kbd>p</kbd> | <kbd>⌘</kbd>+<kbd>o</kbd> | *skip selection of next instance of selected* |
 | <kbd>◇</kbd>+<kbd>f</kbd> | <kbd>⌘</kbd>+<kbd>u</kbd> | *undo selection of next instance of selected* |

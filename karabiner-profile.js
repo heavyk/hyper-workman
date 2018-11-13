@@ -165,6 +165,8 @@ setTimeout(() => {
         super_("ctrl+u", "shift+ctrl+up"),
         super_("ctrl+e", "shift+ctrl+down"),
       ]),
+
+      // TODO: undo / redo cursor positions
     ),
 
     generate_manipulators(
@@ -177,21 +179,28 @@ setTimeout(() => {
         // backspace - ???
         // enter - dunno... it's kinda far from where the hand sits...
         "open_bracket", "close_bracket",
-        "enter", "backspace", "space",
+        "enter", "backspace",
         "semicolon", "equal_sign", "quote", "non_us_pound",
         1, 2, 3, 4, 5, 6, 7, 8, 9, 0
       ].map((key) => hyper_(key, 'shift+'+key, key+'')))
     ),
 
-    // generate_manipulators(
-    //   "Hyper Command",
-    //   "sometimes, hyper should also behave like command",
-    //   hyper_group("hyper command stuff", [
-    //     // "slash", // hyper+/ should toggle comment
-    //     "open_bracket", "close_bracket", // hyper+[] should indent / dedent
-    //     // I have run into quite a few times now the use-case where I try to do open brace more than indent
-    //   ].map((key) => hyper_(key, 'cmd+'+key)))
-    // ),
+    generate_manipulators(
+      "Hyper Command",
+      "sometimes, hyper should also behave like command",
+      hyper_group("hyper command stuff", [
+        // "slash", // hyper+/ should toggle comment
+        // "open_bracket", "close_bracket", // hyper+[] should indent / dedent
+        // I have run into quite a few times now the use-case where I try to do open brace more than indent
+      ].map((key) => hyper_(key, 'cmd+'+key))),
+
+      hyper_group("essential commands", [
+        hyper_("s", "cmd+s", "save"),
+        hyper_("a", "cmd+a", "select-all"),
+        hyper_("z", "cmd+z", "undo"),
+        hyper_("cmd+z", "cmd+shift+z", "redo"),
+      ]),
+    ),
 
     generate_manipulators(
       "Hyper Normal",
@@ -205,6 +214,7 @@ setTimeout(() => {
       "Hyper Atom",
       "atom specific programming commands",
       hyper_group("special atom configuration", [
+        super_("space", "cmd+d", "select next instance of selected"),
         super_("p", "cmd+d", "select next instance of selected"),
         super_("cmd+p", "cmd+o", "skip selection of next instance of selected"),
         super_("f", "cmd+u", "undo selection of next instance of selected"),
@@ -419,14 +429,16 @@ function print_manipulators (manipulators) {
   for (let manipulator of manipulators) {
     if (manipulator.heading) {
       // manipulators group
-      console.log('\n#### ' + manipulator.heading)
       let get_stdout = buffer_stdout()
       let sub_manipz = print_manipulators(manipulator.manipulators)
       let saved_buffer = get_stdout()
-      console.log('| from | to |' + (sub_manipz.has_description ? ' description |' : ''))
-      console.log('| --- | --- |' + (sub_manipz.has_description ? ' --- |' : ''))
-      saved_buffer.forEach(process.stdout.write)
-      manipz.push(...sub_manipz)
+      if (sub_manipz.length) {
+        console.log('\n#### ' + manipulator.heading)
+        console.log('| from | to |' + (sub_manipz.has_description ? ' description |' : ''))
+        console.log('| --- | --- |' + (sub_manipz.has_description ? ' --- |' : ''))
+        saved_buffer.forEach(process.stdout.write)
+        manipz.push(...sub_manipz)
+      }
     } else {
       // individual manipulators
       if (print_key_description(manipulator.description)) has_description = true
