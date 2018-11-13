@@ -343,6 +343,46 @@
           "type": "basic"
         },
         {
+          "description": "hyper+f -> home",
+          "from": {
+            "key_code": "u",
+            "modifiers": {
+              "mandatory": [
+                "right_command",
+                "right_control",
+                "right_shift",
+                "right_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "home"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "description": "hyper+p -> end",
+          "from": {
+            "key_code": "o",
+            "modifiers": {
+              "mandatory": [
+                "right_command",
+                "right_control",
+                "right_shift",
+                "right_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "end"
+            }
+          ],
+          "type": "basic"
+        },
+        {
           "description": "hyper+cmd+f -> page_up",
           "from": {
             "key_code": "u",
@@ -784,6 +824,54 @@
             }
           ],
           "type": "basic"
+        },
+        {
+          "description": "hyper+cmd+[ -> cmd+[ (indent)",
+          "from": {
+            "key_code": "open_bracket",
+            "modifiers": {
+              "mandatory": [
+                "right_command",
+                "right_control",
+                "right_shift",
+                "right_option",
+                "left_command"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "open_bracket",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "description": "hyper+cmd+] -> cmd+] (indent)",
+          "from": {
+            "key_code": "close_bracket",
+            "modifiers": {
+              "mandatory": [
+                "right_command",
+                "right_control",
+                "right_shift",
+                "right_option",
+                "left_command"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "close_bracket",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "type": "basic"
         }
       ]
     },
@@ -847,6 +935,52 @@
     {
       "description": "hyper should behave like shift (most of the time)",
       "manipulators": [
+        {
+          "description": "hyper+open_bracket -> shift+open_bracket (open_bracket)",
+          "from": {
+            "key_code": "open_bracket",
+            "modifiers": {
+              "mandatory": [
+                "right_command",
+                "right_control",
+                "right_shift",
+                "right_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "open_bracket",
+              "modifiers": [
+                "left_shift"
+              ]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "description": "hyper+close_bracket -> shift+close_bracket (close_bracket)",
+          "from": {
+            "key_code": "close_bracket",
+            "modifiers": {
+              "mandatory": [
+                "right_command",
+                "right_control",
+                "right_shift",
+                "right_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "close_bracket",
+              "modifiers": [
+                "left_shift"
+              ]
+            }
+          ],
+          "type": "basic"
+        },
         {
           "description": "hyper+enter -> shift+enter (enter)",
           "from": {
@@ -955,6 +1089,29 @@
           "to": [
             {
               "key_code": "equal_sign",
+              "modifiers": [
+                "left_shift"
+              ]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "description": "hyper+quote -> shift+quote (quote)",
+          "from": {
+            "key_code": "quote",
+            "modifiers": {
+              "mandatory": [
+                "right_command",
+                "right_control",
+                "right_shift",
+                "right_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "quote",
               "modifiers": [
                 "left_shift"
               ]
@@ -1221,26 +1378,6 @@
       "description": "hyper should not modify these keys' behaviour",
       "manipulators": [
         {
-          "description": "hyper+quote -> quote (quote)",
-          "from": {
-            "key_code": "quote",
-            "modifiers": {
-              "mandatory": [
-                "right_command",
-                "right_control",
-                "right_shift",
-                "right_option"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "quote"
-            }
-          ],
-          "type": "basic"
-        },
-        {
           "description": "hyper+comma -> comma (comma)",
           "from": {
             "key_code": "comma",
@@ -1279,6 +1416,46 @@
             }
           ],
           "type": "basic"
+        },
+        {
+          "description": "hyper+hyphen -> hyphen (hyphen)",
+          "from": {
+            "key_code": "hyphen",
+            "modifiers": {
+              "mandatory": [
+                "right_command",
+                "right_control",
+                "right_shift",
+                "right_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "hyphen"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "description": "hyper+i -> i (i)",
+          "from": {
+            "key_code": "semicolon",
+            "modifiers": {
+              "mandatory": [
+                "right_command",
+                "right_control",
+                "right_shift",
+                "right_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "semicolon"
+            }
+          ],
+          "type": "basic"
         }
       ]
     },
@@ -1286,9 +1463,9 @@
       "description": "atom specific programming commands",
       "manipulators": [
         {
-          "description": "super+space -> cmd+d (select next instance of selected)",
+          "description": "super+p -> cmd+d (select next instance of selected)",
           "from": {
-            "key_code": "spacebar",
+            "key_code": "o",
             "modifiers": {
               "mandatory": [
                 "right_command",
@@ -1302,6 +1479,55 @@
           "to": [
             {
               "key_code": "w",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "description": "super+cmd+p -> cmd+o (skip selection of next instance of selected)",
+          "from": {
+            "key_code": "o",
+            "modifiers": {
+              "mandatory": [
+                "right_command",
+                "right_control",
+                "right_shift",
+                "right_option",
+                "left_shift",
+                "left_command"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "l",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "description": "super+f -> cmd+u (undo selection of next instance of selected)",
+          "from": {
+            "key_code": "u",
+            "modifiers": {
+              "mandatory": [
+                "right_command",
+                "right_control",
+                "right_shift",
+                "right_option",
+                "left_shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "i",
               "modifiers": [
                 "left_command"
               ]

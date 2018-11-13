@@ -15,6 +15,7 @@ const util = require('util')
 setTimeout(() => {
   let get_stdout = buffer_stdout()
 
+  // TODO: move the header into its own md file, then readFileSync and output the rules.
   // console.log('# HYPER-WorkMan (UNEO)')
   console.log('# hyper-workman')
   console.log(`a super cool keyboard configuration inspired by [Enhanced CapsLock](https://github.com/Vonng/Capslock) and then tailored for the [Workman Keyboard Layout](https://workmanlayout.org/).`)
@@ -94,8 +95,8 @@ setTimeout(() => {
       // it seems like the home and end are maybe a bit clunky, since cmd+(left/right) go to home end
       // probably, I will want to make it some sort of smart movement control thing ... dunno yet
       hyper_group("normal jumping", [
-        // hyper_("f", "home"),
-        // hyper_("p", "end"),
+        hyper_("f", "home"),
+        hyper_("p", "end"),
         hyper_("cmd+f", "page_up"),
         hyper_("cmd+p", "page_down"),
       ]),
@@ -150,6 +151,11 @@ setTimeout(() => {
         hyper_("d", "backspace", "backspace shortcut"), // TODO: make this smart??
         super_("d", "delete", "delete selection"), // TODO: make this smart??
       ]),
+
+      hyper_group("indent / dedent", [
+        hyper_("cmd+[", "cmd+[", "indent"),
+        hyper_("cmd+]", "cmd+]", "indent"),
+      ]),
     ),
 
     generate_manipulators(
@@ -170,18 +176,20 @@ setTimeout(() => {
         // space - open some sort of command prompt or something? (maybe emacs emulation)
         // backspace - ???
         // enter - dunno... it's kinda far from where the hand sits...
+        "open_bracket", "close_bracket",
         "enter", "backspace", "space",
-        "semicolon", "equal_sign", "non_us_pound",
+        "semicolon", "equal_sign", "quote", "non_us_pound",
         1, 2, 3, 4, 5, 6, 7, 8, 9, 0
       ].map((key) => hyper_(key, 'shift+'+key, key+'')))
     ),
 
     // generate_manipulators(
     //   "Hyper Command",
-    //   "hyper should behave like command -- the rest of the time",
+    //   "sometimes, hyper should also behave like command",
     //   hyper_group("hyper command stuff", [
-    //     "slash", // hyper+/ should toggle comment
+    //     // "slash", // hyper+/ should toggle comment
     //     "open_bracket", "close_bracket", // hyper+[] should indent / dedent
+    //     // I have run into quite a few times now the use-case where I try to do open brace more than indent
     //   ].map((key) => hyper_(key, 'cmd+'+key)))
     // ),
 
@@ -189,7 +197,7 @@ setTimeout(() => {
       "Hyper Normal",
       "hyper should not modify these keys' behaviour",
       hyper_group("hyper normal keys", [
-        "quote", "comma", "period",
+        "comma", "period", "hyphen", "i",
       ].map((key) => hyper_(key, key, key+'')))
     ),
 
@@ -197,8 +205,9 @@ setTimeout(() => {
       "Hyper Atom",
       "atom specific programming commands",
       hyper_group("special atom configuration", [
-        // hyper_("d", "cmd+d", "select next instance of selected"),
-        super_("space", "cmd+d", "select next instance of selected"),
+        super_("p", "cmd+d", "select next instance of selected"),
+        super_("cmd+p", "cmd+o", "skip selection of next instance of selected"),
+        super_("f", "cmd+u", "undo selection of next instance of selected"),
         hyper_("cmd+d", "cmd+shift+d", "duplicate line in atom"),
         super_("cmd+d", "cmd+shift+d", "duplicate line in atom"),
       ]),
@@ -217,39 +226,7 @@ setTimeout(() => {
     ),
   ]
 
-  const complex_modifications_hyper_workman = {
-    title: "hyper-workman",
-    author: "heavyk (kenny@gatunes.com)",
-    "hostpage": "https://pqrs.org/osx/karabiner/complex_modifications/",
-    "manual": "https://github.com/heavyk/hyper-workman/tree/master",
-    "import_url": "karabiner://karabiner/assets/complex_modifications/import?url=https://raw.githubusercontent.com/heavyk/hyper-worman/master/hyper_workman.json",
-    rules: rules
-  }
-
-  const README = get_stdout().join('')+'\n'
-  const json = JSON.stringify(complex_modifications_hyper_workman, null, '  ') + '\n'
-
-  console.log('README: '+Buffer.byteLength(README)+' bytes')
-  console.log('json: '+Buffer.byteLength(json)+' bytes')
-  console.log('')
-
-  fs.writeFileSync(`${__dirname}/hyper_workman.json`, json)
-  console.log(`wrote ${__dirname}/hyper_workman.json`)
-  fs.writeFileSync(`${__dirname}/README.md`, README)
-  console.log(`wrote ${__dirname}/README.md`)
-
-  let profile = process.argv[2]
-  if (profile) {
-    if (!~process.argv.indexOf('--no_local')) {
-      fs.writeFileSync(`${ASSET_PATH}/hyper_workman.json`, json)
-      console.log(`wrote ${ASSET_PATH}/hyper_workman.json`)
-    }
-
-    console.log('')
-    update_config(CONFIG_PATH, rules, profile === 'update_local' || profile === 'true' || profile)
-  } else {
-    console.log('to update your karabiner profile:\n > node karabiner-profile.js update_local')
-  }
+  write_output(get_stdout, rules)
 }, 0)
 
 
@@ -539,4 +516,61 @@ function buffer_stdout () {
     if (flush) buffer.forEach(old_stdout.write)
     return buffer
   }
+}
+
+function write_output (get_stdout, rules) {
+  const complex_modifications_hyper_workman = {
+    title: "hyper-workman",
+    author: "heavyk (kenny@gatunes.com)",
+    "hostpage": "https://pqrs.org/osx/karabiner/complex_modifications/",
+    "manual": "https://github.com/heavyk/hyper-workman/tree/master",
+    "import_url": "karabiner://karabiner/assets/complex_modifications/import?url=https://raw.githubusercontent.com/heavyk/hyper-worman/master/hyper_workman.json",
+    rules: rules
+  }
+
+  const README = get_stdout().join('')+'\n'
+  const json = JSON.stringify(complex_modifications_hyper_workman, null, '  ') + '\n'
+
+  console.log('README: '+Buffer.byteLength(README)+' bytes')
+  console.log('json: '+Buffer.byteLength(json)+' bytes')
+  console.log('')
+
+  fs.writeFileSync(`${__dirname}/hyper_workman.json`, json)
+  console.log(`wrote ${__dirname}/hyper_workman.json`)
+  fs.writeFileSync(`${__dirname}/README.md`, README)
+  console.log(`wrote ${__dirname}/README.md`)
+
+  let profile = process.argv[2]
+  if (profile) {
+    if (!~process.argv.indexOf('--no_local')) {
+      fs.writeFileSync(`${ASSET_PATH}/hyper_workman.json`, json)
+      console.log(`wrote ${ASSET_PATH}/hyper_workman.json`)
+    }
+
+    console.log('')
+    update_config(CONFIG_PATH, rules, profile === 'update_local' || profile === 'true' || profile)
+  } else {
+    console.log('to update your karabiner profile:\n > node karabiner-profile.js update_local')
+  }
+}
+
+if (!process.parent) {
+  if (~process.argv.indexOf('--watch')) (function () {
+    try {
+      const chalk = require('chalk')
+      const chokidar = require('chokidar')
+      const clear_module = require('clear-module')
+      chokidar.watch(__filename).on('change', (st) => {
+        console.log('file changed! reloading...\n')
+        clear_module(__filename)
+        try {
+          require(__filename)
+        } catch (e) {
+          console.error(e)
+        }
+      })
+    } catch (e) {
+      console.log('could not find modules necessary to watch')
+    }
+  })()
 }

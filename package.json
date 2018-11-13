@@ -1,0 +1,26 @@
+{
+  "name": "hyper-workman",
+  "version": "1.0.0",
+  "description": "a super cool keyboard configuration inspired by [Enhanced CapsLock](https://github.com/Vonng/Capslock) and then tailored for the [Workman Keyboard Layout](https://workmanlayout.org/).",
+  "main": "karabiner-profile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "chalk": "^2.4.1",
+    "chokidar": "^2.0.4",
+    "clear-module": "^3.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heavyk/hyper-workman.git"
+  },
+  "keywords": [],
+  "author": "kenneth bentley",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/heavyk/hyper-workman/issues"
+  },
+  "homepage": "https://github.com/heavyk/hyper-workman#readme"
+}

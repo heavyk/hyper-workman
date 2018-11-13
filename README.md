@@ -44,6 +44,8 @@ it uses the UNEO right-hand keys for navigation
 #### normal jumping
 | from | to |
 | --- | --- |
+| <kbd>✧</kbd>+<kbd>f</kbd> | <kbd>⤒</kbd> |
+| <kbd>✧</kbd>+<kbd>p</kbd> | <kbd>⤓</kbd> |
 | <kbd>✧</kbd>+<kbd>⌘</kbd>+<kbd>f</kbd> | <kbd>⇞</kbd> |
 | <kbd>✧</kbd>+<kbd>⌘</kbd>+<kbd>p</kbd> | <kbd>⇟</kbd> |
 
@@ -101,6 +103,12 @@ it uses the UNEO right-hand keys for navigation
 | <kbd>✧</kbd>+<kbd>d</kbd> | <kbd>⌫</kbd> | *backspace shortcut* |
 | <kbd>◇</kbd>+<kbd>d</kbd> | <kbd>⌦</kbd> | *delete selection* |
 
+#### indent / dedent
+| from | to | description |
+| --- | --- | --- |
+| <kbd>✧</kbd>+<kbd>⌘</kbd>+<kbd>[</kbd> | <kbd>⌘</kbd>+<kbd>[</kbd> | *indent* |
+| <kbd>✧</kbd>+<kbd>⌘</kbd>+<kbd>]</kbd> | <kbd>⌘</kbd>+<kbd>]</kbd> | *indent* |
+
 
 ### Hyper Cursor
 
@@ -120,11 +128,14 @@ it uses the UNEO right-hand keys for navigation
 #### hyper behaves like shift for these keys
 | from | to | description |
 | --- | --- | --- |
+| <kbd>✧</kbd>+<kbd>[</kbd> | <kbd>⇧</kbd>+<kbd>[</kbd> | *open_bracket* |
+| <kbd>✧</kbd>+<kbd>]</kbd> | <kbd>⇧</kbd>+<kbd>]</kbd> | *close_bracket* |
 | <kbd>✧</kbd>+<kbd>⌤</kbd> | <kbd>⇧</kbd>+<kbd>⌤</kbd> | *enter* |
 | <kbd>✧</kbd>+<kbd>⌫</kbd> | <kbd>⇧</kbd>+<kbd>⌫</kbd> | *backspace* |
 | <kbd>✧</kbd>+<kbd>space</kbd> | <kbd>⇧</kbd>+<kbd>space</kbd> | *space* |
 | <kbd>✧</kbd>+<kbd>;</kbd> | <kbd>⇧</kbd>+<kbd>;</kbd> | *semicolon* |
 | <kbd>✧</kbd>+<kbd>=</kbd> | <kbd>⇧</kbd>+<kbd>=</kbd> | *equal_sign* |
+| <kbd>✧</kbd>+<kbd>'</kbd> | <kbd>⇧</kbd>+<kbd>'</kbd> | *quote* |
 | <kbd>✧</kbd>+<kbd>\</kbd> | <kbd>⇧</kbd>+<kbd>\</kbd> | *non_us_pound* |
 | <kbd>✧</kbd>+<kbd>1</kbd> | <kbd>⇧</kbd>+<kbd>1</kbd> | *1* |
 | <kbd>✧</kbd>+<kbd>2</kbd> | <kbd>⇧</kbd>+<kbd>2</kbd> | *2* |
@@ -145,9 +156,10 @@ it uses the UNEO right-hand keys for navigation
 #### hyper normal keys
 | from | to | description |
 | --- | --- | --- |
-| <kbd>✧</kbd>+<kbd>'</kbd> | <kbd>'</kbd> | *quote* |
 | <kbd>✧</kbd>+<kbd>,</kbd> | <kbd>,</kbd> | *comma* |
 | <kbd>✧</kbd>+<kbd>.</kbd> | <kbd>.</kbd> | *period* |
+| <kbd>✧</kbd>+<kbd>-</kbd> | <kbd>-</kbd> | *hyphen* |
+| <kbd>✧</kbd>+<kbd>i</kbd> | <kbd>i</kbd> | *i* |
 
 
 ### Hyper Atom
@@ -157,7 +169,9 @@ it uses the UNEO right-hand keys for navigation
 #### special atom configuration
 | from | to | description |
 | --- | --- | --- |
-| <kbd>◇</kbd>+<kbd>space</kbd> | <kbd>⌘</kbd>+<kbd>d</kbd> | *select next instance of selected* |
+| <kbd>◇</kbd>+<kbd>p</kbd> | <kbd>⌘</kbd>+<kbd>d</kbd> | *select next instance of selected* |
+| <kbd>◇</kbd>+<kbd>⌘</kbd>+<kbd>p</kbd> | <kbd>⌘</kbd>+<kbd>o</kbd> | *skip selection of next instance of selected* |
+| <kbd>◇</kbd>+<kbd>f</kbd> | <kbd>⌘</kbd>+<kbd>u</kbd> | *undo selection of next instance of selected* |
 | <kbd>✧</kbd>+<kbd>⌘</kbd>+<kbd>d</kbd> | <kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>d</kbd> | *duplicate line in atom* |
 | <kbd>◇</kbd>+<kbd>⌘</kbd>+<kbd>d</kbd> | <kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>d</kbd> | *duplicate line in atom* |
 
