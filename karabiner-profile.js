@@ -1,50 +1,51 @@
-// const {hyper_, super_, hyper_group, generate_manipulators} = require('./karabiner-profile.js')
-
 // TODO:
 // make a keyboard layout svg
 // make a GUI configuration?
 
-// module.exports = \
-function make_rules () {
+const hyper_selector_rule = () => ({
+  description: 'Hyper + Tab = Hyper Selector',
+  manipulators: [{
+    from: {
+      key_code: 'tab',
+      modifiers: { optional: [ 'any' ], mandatory: [ 'right_command', 'right_control', 'right_option', 'right_shift' ] }
+    },
+    to: [{
+      lazy: true,
+      key_code: 'left_shift',
+      modifiers: [ 'right_command', 'right_control', 'right_option', 'right_shift' ]
+    }],
+    parameters: { "basic.to_if_alone_timeout_milliseconds": 200 }, // any faster, and it's too fast to cmd+tab between windows
+    to_if_alone: [{ key_code: 'tab' }],
+    type: 'basic'
+  }]
+})
+
+const hyper_caps_lock_rule = () => ({
+  description: 'CapsLock to Hyper/Escape',
+  manipulators: [{
+    from: {
+      key_code: 'caps_lock',
+      modifiers: { optional: [ 'any' ] }
+    },
+    to: [{
+      lazy: true,
+      key_code: 'right_shift',
+      modifiers: [ 'right_command', 'right_control', 'right_option' ]
+    }],
+    to_if_alone: [{ key_code: 'escape' }],
+    type: 'basic'
+  }]
+})
+
+
+function enumerate_rules () {
   return [
     // the second rule
-    {
-      description: 'Hyper + Tab = Hyper Selector',
-      manipulators: [{
-        from: {
-          key_code: 'tab',
-          modifiers: { optional: [ 'any' ], mandatory: [ 'right_command', 'right_control', 'right_option', 'right_shift' ] }
-        },
-        to: [{
-          lazy: true,
-          key_code: 'left_shift',
-          modifiers: [ 'right_command', 'right_control', 'right_option', 'right_shift' ]
-        }],
-        parameters: { "basic.to_if_alone_timeout_milliseconds": 200 }, // any faster, and it's too fast to cmd+tab between windows
-        to_if_alone: [{ key_code: 'tab' }],
-        type: 'basic'
-      }]
-    },
+    hyper_selector_rule(),
     // the main rule
-    {
-      description: 'CapsLock to Hyper/Escape',
-      manipulators: [{
-        from: {
-          key_code: 'caps_lock',
-          modifiers: { optional: [ 'any' ] }
-        },
-        to: [{
-          lazy: true,
-          key_code: 'right_shift',
-          modifiers: [ 'right_command', 'right_control', 'right_option' ]
-        }],
-        to_if_alone: [{ key_code: 'escape' }],
-        type: 'basic'
-      }]
-    },
+    hyper_caps_lock_rule(),
 
-
-    generate_manipulators(
+    make_rules(
       "Hyper Navigation",
       "move the cursor around (UNEO configuration)",
 
@@ -86,7 +87,7 @@ function make_rules () {
       ]),
     ),
 
-    generate_manipulators(
+    make_rules(
       "Super Selection",
       "selecting chars under the cursor with super",
 
@@ -126,7 +127,7 @@ function make_rules () {
       // ]),
     ),
 
-    generate_manipulators(
+    make_rules(
       "Hyper Manipulation",
       "buffer modification",
       hyper_group("move line under cursor up / down", [
@@ -142,7 +143,7 @@ function make_rules () {
       ]),
     ),
 
-    generate_manipulators(
+    make_rules(
       "Hyper Cursor",
       "cursor modification",
       hyper_group("duplicate cursor on the line above / below", [
@@ -153,7 +154,7 @@ function make_rules () {
       // TODO: undo / redo cursor positions
     ),
 
-    generate_manipulators(
+    make_rules(
       "Hyper Shift",
       "hyper should behave like shift (most of the time)",
       hyper_group("hyper behaves like shift for these keys", [
@@ -169,7 +170,7 @@ function make_rules () {
       ].map((key) => hyper_(key, 'shift+'+key, key+'')))
     ),
 
-    generate_manipulators(
+    make_rules(
       "Hyper Command",
       "sometimes, hyper should also behave like command",
       hyper_group("hyper command stuff", [
@@ -186,7 +187,7 @@ function make_rules () {
       ]),
     ),
 
-    generate_manipulators(
+    make_rules(
       "Hyper Normal",
       "hyper should not modify these keys' behaviour",
       hyper_group("hyper normal keys", [
@@ -194,7 +195,7 @@ function make_rules () {
       ].map((key) => hyper_(key, key, key+'')))
     ),
 
-    generate_manipulators(
+    make_rules(
       "Hyper Atom",
       "atom specific programming commands",
       hyper_group("special atom configuration", [
@@ -403,12 +404,12 @@ function update_config (path, rules, selected = true) {
   console.error(`unable to locate karabiner profile: ${selected}`)
 }
 
-function generate_manipulators (title, description, ...manipulators) {
+function make_rules (title, description, ...manipulators) {
   console.log('\n\n### ' + title)
   if (description) console.log('\n##### ' + description)
 
   manipulators = print_manipulators(manipulators)
-  return { description, manipulators }
+  return { title, description, manipulators }
 }
 
 function print_manipulators (manipulators) {
@@ -557,7 +558,7 @@ function write_output (get_stdout, rules) {
 
 setTimeout(() => {
   let get_stdout = buffer_stdout()
-  let rules = make_rules()
+  let rules = enumerate_rules()
   write_output(get_stdout, rules)
 }, 0)
 
@@ -581,3 +582,5 @@ if (!process.parent) {
     }
   })()
 }
+
+module.exports = { hyper_, super_, make_rules, hyper_group, hyper_selector_rule, hyper_caps_lock_rule }

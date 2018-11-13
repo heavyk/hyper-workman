@@ -80,6 +80,7 @@
       ]
     },
     {
+      "title": "Hyper Navigation",
       "description": "move the cursor around (UNEO configuration)",
       "manipulators": [
         {
@@ -427,6 +428,7 @@
       ]
     },
     {
+      "title": "Super Selection",
       "description": "selecting chars under the cursor with super",
       "manipulators": [
         {
@@ -732,6 +734,7 @@
       ]
     },
     {
+      "title": "Hyper Manipulation",
       "description": "buffer modification",
       "manipulators": [
         {
@@ -876,6 +879,7 @@
       ]
     },
     {
+      "title": "Hyper Cursor",
       "description": "cursor modification",
       "manipulators": [
         {
@@ -933,6 +937,7 @@
       ]
     },
     {
+      "title": "Hyper Shift",
       "description": "hyper should behave like shift (most of the time)",
       "manipulators": [
         {
@@ -1352,6 +1357,7 @@
       ]
     },
     {
+      "title": "Hyper Command",
       "description": "sometimes, hyper should also behave like command",
       "manipulators": [
         {
@@ -1451,6 +1457,7 @@
       ]
     },
     {
+      "title": "Hyper Normal",
       "description": "hyper should not modify these keys' behaviour",
       "manipulators": [
         {
@@ -1536,6 +1543,7 @@
       ]
     },
     {
+      "title": "Hyper Atom",
       "description": "atom specific programming commands",
       "manipulators": [
         {
