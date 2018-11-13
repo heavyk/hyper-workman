@@ -40,7 +40,7 @@
       "description": "move the cursor around (UNEO configuration)",
       "manipulators": [
         {
-          "description": "hyper+u -> up",
+          "description": "hyper+u -> up (move up 1-char)",
           "from": {
             "key_code": "i",
             "modifiers": {
@@ -60,7 +60,7 @@
           "type": "basic"
         },
         {
-          "description": "hyper+e -> down",
+          "description": "hyper+e -> down (move down 1-char)",
           "from": {
             "key_code": "k",
             "modifiers": {
@@ -80,7 +80,7 @@
           "type": "basic"
         },
         {
-          "description": "hyper+n -> left",
+          "description": "hyper+n -> left (move left 1-char)",
           "from": {
             "key_code": "j",
             "modifiers": {
@@ -100,7 +100,7 @@
           "type": "basic"
         },
         {
-          "description": "hyper+o -> right",
+          "description": "hyper+o -> right (move right 1-char)",
           "from": {
             "key_code": "l",
             "modifiers": {
@@ -599,13 +599,64 @@
     },
     {
       "description": "cursor modification",
-      "manipulators": []
-    },
-    {
-      "description": "hyper should behave like shift -- most of the time",
       "manipulators": [
         {
-          "description": "hyper+enter -> shift+enter",
+          "description": "hyper+opt+u -> shift+ctrl+up",
+          "from": {
+            "key_code": "i",
+            "modifiers": {
+              "mandatory": [
+                "right_command",
+                "right_control",
+                "right_shift",
+                "right_option",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "up_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_control"
+              ]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "description": "hyper+opt+e -> shift+ctrl+down",
+          "from": {
+            "key_code": "k",
+            "modifiers": {
+              "mandatory": [
+                "right_command",
+                "right_control",
+                "right_shift",
+                "right_option",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "down_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_control"
+              ]
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "hyper should behave like shift (most of the time)",
+      "manipulators": [
+        {
+          "description": "hyper+enter -> shift+enter (enter)",
           "from": {
             "key_code": "return_or_enter",
             "modifiers": {
@@ -628,7 +679,7 @@
           "type": "basic"
         },
         {
-          "description": "hyper+backspace -> shift+backspace",
+          "description": "hyper+backspace -> shift+backspace (backspace)",
           "from": {
             "key_code": "delete_or_backspace",
             "modifiers": {
@@ -651,7 +702,7 @@
           "type": "basic"
         },
         {
-          "description": "hyper+space -> shift+space",
+          "description": "hyper+space -> shift+space (space)",
           "from": {
             "key_code": "spacebar",
             "modifiers": {
@@ -674,122 +725,7 @@
           "type": "basic"
         },
         {
-          "description": "hyper+quote -> shift+quote",
-          "from": {
-            "key_code": "quote",
-            "modifiers": {
-              "mandatory": [
-                "right_command",
-                "right_control",
-                "right_shift",
-                "right_option"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "quote",
-              "modifiers": [
-                "left_shift"
-              ]
-            }
-          ],
-          "type": "basic"
-        },
-        {
-          "description": "hyper+slash -> shift+slash",
-          "from": {
-            "key_code": "slash",
-            "modifiers": {
-              "mandatory": [
-                "right_command",
-                "right_control",
-                "right_shift",
-                "right_option"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "slash",
-              "modifiers": [
-                "left_shift"
-              ]
-            }
-          ],
-          "type": "basic"
-        },
-        {
-          "description": "hyper+comma -> shift+comma",
-          "from": {
-            "key_code": "comma",
-            "modifiers": {
-              "mandatory": [
-                "right_command",
-                "right_control",
-                "right_shift",
-                "right_option"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "comma",
-              "modifiers": [
-                "left_shift"
-              ]
-            }
-          ],
-          "type": "basic"
-        },
-        {
-          "description": "hyper+period -> shift+period",
-          "from": {
-            "key_code": "period",
-            "modifiers": {
-              "mandatory": [
-                "right_command",
-                "right_control",
-                "right_shift",
-                "right_option"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "period",
-              "modifiers": [
-                "left_shift"
-              ]
-            }
-          ],
-          "type": "basic"
-        },
-        {
-          "description": "hyper+semicolon -> shift+semicolon",
-          "from": {
-            "key_code": "p",
-            "modifiers": {
-              "mandatory": [
-                "right_command",
-                "right_control",
-                "right_shift",
-                "right_option"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "p",
-              "modifiers": [
-                "left_shift"
-              ]
-            }
-          ],
-          "type": "basic"
-        },
-        {
-          "description": "hyper+hyphen -> shift+hyphen",
+          "description": "hyper+hyphen -> shift+hyphen (hyphen)",
           "from": {
             "key_code": "hyphen",
             "modifiers": {
@@ -812,7 +748,7 @@
           "type": "basic"
         },
         {
-          "description": "hyper+equal_sign -> shift+equal_sign",
+          "description": "hyper+equal_sign -> shift+equal_sign (equal_sign)",
           "from": {
             "key_code": "equal_sign",
             "modifiers": {
@@ -835,7 +771,7 @@
           "type": "basic"
         },
         {
-          "description": "hyper+non_us_pound -> shift+non_us_pound",
+          "description": "hyper+non_us_pound -> shift+non_us_pound (non_us_pound)",
           "from": {
             "key_code": "non_us_pound",
             "modifiers": {
@@ -858,53 +794,7 @@
           "type": "basic"
         },
         {
-          "description": "hyper+open_bracket -> shift+open_bracket",
-          "from": {
-            "key_code": "open_bracket",
-            "modifiers": {
-              "mandatory": [
-                "right_command",
-                "right_control",
-                "right_shift",
-                "right_option"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "open_bracket",
-              "modifiers": [
-                "left_shift"
-              ]
-            }
-          ],
-          "type": "basic"
-        },
-        {
-          "description": "hyper+close_bracket -> shift+close_bracket",
-          "from": {
-            "key_code": "close_bracket",
-            "modifiers": {
-              "mandatory": [
-                "right_command",
-                "right_control",
-                "right_shift",
-                "right_option"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "close_bracket",
-              "modifiers": [
-                "left_shift"
-              ]
-            }
-          ],
-          "type": "basic"
-        },
-        {
-          "description": "hyper+1 -> shift+1",
+          "description": "hyper+1 -> shift+1 (1)",
           "from": {
             "key_code": "1",
             "modifiers": {
@@ -927,7 +817,7 @@
           "type": "basic"
         },
         {
-          "description": "hyper+2 -> shift+2",
+          "description": "hyper+2 -> shift+2 (2)",
           "from": {
             "key_code": "2",
             "modifiers": {
@@ -950,7 +840,7 @@
           "type": "basic"
         },
         {
-          "description": "hyper+3 -> shift+3",
+          "description": "hyper+3 -> shift+3 (3)",
           "from": {
             "key_code": "3",
             "modifiers": {
@@ -973,7 +863,7 @@
           "type": "basic"
         },
         {
-          "description": "hyper+4 -> shift+4",
+          "description": "hyper+4 -> shift+4 (4)",
           "from": {
             "key_code": "4",
             "modifiers": {
@@ -996,7 +886,7 @@
           "type": "basic"
         },
         {
-          "description": "hyper+5 -> shift+5",
+          "description": "hyper+5 -> shift+5 (5)",
           "from": {
             "key_code": "5",
             "modifiers": {
@@ -1019,7 +909,7 @@
           "type": "basic"
         },
         {
-          "description": "hyper+6 -> shift+6",
+          "description": "hyper+6 -> shift+6 (6)",
           "from": {
             "key_code": "6",
             "modifiers": {
@@ -1042,7 +932,7 @@
           "type": "basic"
         },
         {
-          "description": "hyper+7 -> shift+7",
+          "description": "hyper+7 -> shift+7 (7)",
           "from": {
             "key_code": "7",
             "modifiers": {
@@ -1065,7 +955,7 @@
           "type": "basic"
         },
         {
-          "description": "hyper+8 -> shift+8",
+          "description": "hyper+8 -> shift+8 (8)",
           "from": {
             "key_code": "8",
             "modifiers": {
@@ -1088,7 +978,7 @@
           "type": "basic"
         },
         {
-          "description": "hyper+9 -> shift+9",
+          "description": "hyper+9 -> shift+9 (9)",
           "from": {
             "key_code": "9",
             "modifiers": {
@@ -1111,7 +1001,7 @@
           "type": "basic"
         },
         {
-          "description": "hyper+0 -> shift+0",
+          "description": "hyper+0 -> shift+0 (0)",
           "from": {
             "key_code": "0",
             "modifiers": {
@@ -1136,10 +1026,95 @@
       ]
     },
     {
+      "description": "hyper should not modify these keys' behaviour",
+      "manipulators": [
+        {
+          "description": "hyper+quote -> quote",
+          "from": {
+            "key_code": "quote",
+            "modifiers": {
+              "mandatory": [
+                "right_command",
+                "right_control",
+                "right_shift",
+                "right_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "quote"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "description": "hyper+comma -> comma",
+          "from": {
+            "key_code": "comma",
+            "modifiers": {
+              "mandatory": [
+                "right_command",
+                "right_control",
+                "right_shift",
+                "right_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "comma"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "description": "hyper+period -> period",
+          "from": {
+            "key_code": "period",
+            "modifiers": {
+              "mandatory": [
+                "right_command",
+                "right_control",
+                "right_shift",
+                "right_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "period"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "description": "hyper+semicolon -> semicolon",
+          "from": {
+            "key_code": "p",
+            "modifiers": {
+              "mandatory": [
+                "right_command",
+                "right_control",
+                "right_shift",
+                "right_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "p"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
       "description": "atom specific programming commands",
       "manipulators": [
         {
-          "description": "hyper+d -> cmd+d",
+          "description": "hyper+d -> cmd+d (select next instance of selected)",
           "from": {
             "key_code": "w",
             "modifiers": {
@@ -1162,7 +1137,7 @@
           "type": "basic"
         },
         {
-          "description": "hyper+cmd+d -> cmd+shift+d",
+          "description": "hyper+cmd+d -> cmd+shift+d (duplicate line in atom)",
           "from": {
             "key_code": "w",
             "modifiers": {
@@ -1187,7 +1162,7 @@
           "type": "basic"
         },
         {
-          "description": "hyper+opt+d -> ctrl+shift+k",
+          "description": "hyper+opt+d -> ctrl+shift+k (delete line in atom)",
           "from": {
             "key_code": "w",
             "modifiers": {
@@ -1212,7 +1187,7 @@
           "type": "basic"
         },
         {
-          "description": "hyper+cmd+backspace -> cmd+backspace",
+          "description": "hyper+cmd+backspace -> cmd+backspace (delete until beginning of line)",
           "from": {
             "key_code": "delete_or_backspace",
             "modifiers": {
@@ -1236,7 +1211,7 @@
           "type": "basic"
         },
         {
-          "description": "hyper+opt+backspace -> opt+backspace",
+          "description": "hyper+opt+backspace -> opt+backspace (delete word)",
           "from": {
             "key_code": "delete_or_backspace",
             "modifiers": {
@@ -1260,7 +1235,7 @@
           "type": "basic"
         },
         {
-          "description": "hyper+backspace -> delete_forward",
+          "description": "hyper+backspace -> delete_forward (delete one char in front)",
           "from": {
             "key_code": "delete_or_backspace",
             "modifiers": {
@@ -1280,7 +1255,7 @@
           "type": "basic"
         },
         {
-          "description": "hyper+delete_forward -> option+delete_forward",
+          "description": "hyper+delete_forward -> option+delete_forward (delete one word in front)",
           "from": {
             "key_code": "delete_forward",
             "modifiers": {
@@ -1303,7 +1278,7 @@
           "type": "basic"
         },
         {
-          "description": "hyper+option+delete_forward -> cmd+delete_forward",
+          "description": "hyper+option+delete_forward -> cmd+delete_forward (delete till end of line)",
           "from": {
             "key_code": "delete_forward",
             "modifiers": {
@@ -1319,6 +1294,75 @@
           "to": [
             {
               "key_code": "delete_forward",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "description": "hyper+/ -> cmd+/ (toggle comment)",
+          "from": {
+            "key_code": "slash",
+            "modifiers": {
+              "mandatory": [
+                "right_command",
+                "right_control",
+                "right_shift",
+                "right_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "slash",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "description": "hyper+[ -> cmd+[ (dedent line)",
+          "from": {
+            "key_code": "open_bracket",
+            "modifiers": {
+              "mandatory": [
+                "right_command",
+                "right_control",
+                "right_shift",
+                "right_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "open_bracket",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "description": "hyper+] -> cmd+] (indent line)",
+          "from": {
+            "key_code": "close_bracket",
+            "modifiers": {
+              "mandatory": [
+                "right_command",
+                "right_control",
+                "right_shift",
+                "right_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "close_bracket",
               "modifiers": [
                 "left_command"
               ]

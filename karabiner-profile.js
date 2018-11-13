@@ -13,11 +13,7 @@ const util = require('util')
 // hyper+option+{f,p} = page-up / page-down ???
 
 setTimeout(() => {
-  let readme = []
-  const old_stdout = process.stdout.write
-  process.stdout.write = (txt) => {
-    readme.push(txt)
-  }
+  let get_stdout = buffer_stdout()
 
   // console.log('# HYPER-WorkMan (UNEO)')
   console.log('# hyper-workman')
@@ -47,11 +43,11 @@ setTimeout(() => {
       "Hyper Navigation",
       "move the cursor around (UNEO configuration)",
 
-      hyper_group("move up / down / left / right 1-char", [
-        hyper("u", "up"),
-        hyper("e", "down"),
-        hyper("n", "left"),
-        hyper("o", "right"),
+      hyper_group("move 1-char", [
+        hyper("u", "up", "move up 1-char"),
+        hyper("e", "down", "move down 1-char"),
+        hyper("n", "left", "move left 1-char"),
+        hyper("o", "right", "move right 1-char"),
       ]),
 
       hyper_group("normal jumping", [
@@ -120,35 +116,61 @@ setTimeout(() => {
       "Hyper Cursor",
       "cursor modification",
       hyper_group("duplicate cursor on the line above / below", [
-        // hyper("opt+u", "shift+ctrl+up"),
-        // hyper("opt+e", "shift+ctrl+down"),
+        hyper("opt+u", "shift+ctrl+up"),
+        hyper("opt+e", "shift+ctrl+down"),
       ])
     ),
 
     generate_manipulators(
       "Hyper Shift",
-      "hyper should behave like shift -- most of the time",
-      hyper_group("hyper shift stuff", [
+      "hyper should behave like shift (most of the time)",
+      hyper_group("hyper behaves like shift for these keys", [
+        // nothing special about these actually
+        // make sure to eventually move them to do other commands
+        // space - open some sort of command prompt or something? (maybe emacs emulation)
+        // backspace - ???
+        // enter - dunno... it's kinda far from where the hand sits...
         "enter", "backspace", "space",
-        "quote", "slash", "comma", "period", "semicolon",
         "hyphen", "equal_sign", "non_us_pound",
-        "open_bracket", "close_bracket",
         1, 2, 3, 4, 5, 6, 7, 8, 9, 0
-      ].map((key) => hyper(key, 'shift+'+key)))
+      ].map((key) => hyper(key, 'shift+'+key, key+'')))
+    ),
+
+    // generate_manipulators(
+    //   "Hyper Command",
+    //   "hyper should behave like command -- the rest of the time",
+    //   hyper_group("hyper command stuff", [
+    //     "slash", // hyper+/ should toggle comment
+    //     "open_bracket", "close_bracket", // hyper+[] should indent / dedent
+    //   ].map((key) => hyper(key, 'cmd+'+key)))
+    // ),
+
+    generate_manipulators(
+      "Hyper Normal",
+      "hyper should not modify these keys' behaviour",
+      hyper_group("hyper normal keys", [
+        "quote", "comma", "period", "semicolon",
+      ].map((key) => hyper(key, key)))
     ),
 
     generate_manipulators(
-      "Hyper Programmer",
+      "Hyper Atom",
       "atom specific programming commands",
       hyper_group("special atom configuration", [
-        hyper("d", "cmd+d"), // select next instance of selected
-        hyper("cmd+d", "cmd+shift+d"), // duplicate line in atom
-        hyper("opt+d", "ctrl+shift+k"), // delete line in atom
-        hyper("cmd+backspace", "cmd+backspace"), // delete until beginning of line
-        hyper("opt+backspace", "opt+backspace"), // delete word
-        hyper("backspace", "delete_forward"), // delete one char in front
-        hyper("delete_forward", "option+delete_forward"), // delete one word in front
-        hyper("option+delete_forward", "cmd+delete_forward"), // delete till end of line
+        hyper("d", "cmd+d", "select next instance of selected"),
+        hyper("cmd+d", "cmd+shift+d", "duplicate line in atom"),
+      ]),
+
+      hyper_group("common atom keys", [
+        hyper("opt+d", "ctrl+shift+k", "delete line in atom"),
+        hyper("cmd+backspace", "cmd+backspace", "delete until beginning of line"),
+        hyper("opt+backspace", "opt+backspace", "delete word"),
+        hyper("backspace", "delete_forward", "delete one char in front"),
+        hyper("delete_forward", "option+delete_forward", "delete one word in front"),
+        hyper("option+delete_forward", "cmd+delete_forward", "delete till end of line"),
+        hyper("/", "cmd+/", "toggle comment"),
+        hyper("[", "cmd+[", "dedent line"),
+        hyper("]", "cmd+]", "indent line"),
       ])
     ),
   ]
@@ -162,9 +184,7 @@ setTimeout(() => {
     rules: rules
   }
 
-  process.stdout.write = old_stdout
-
-  const README = readme.join('')+'\n'
+  const README = get_stdout().join('')+'\n'
   const json = JSON.stringify(complex_modifications_hyper_workman, null, '  ') + '\n'
 
   console.log('README: '+Buffer.byteLength(README)+' bytes')
@@ -269,6 +289,8 @@ const transform_key = {
 
 // most of these taken from:
 // http://xahlee.info/comp/unicode_computing_symbols.html
+// also here:
+// https://www.key-shortcut.com/en/mac-osx/command-keys-mac/
 const key_symbols = {
   // official apple symbols
   "command": "⌘",
@@ -370,24 +392,27 @@ function generate_manipulators (title, description, ...manipulators) {
 
 function print_manipulators (manipulators) {
   let manipz = []
+  let has_description = false
   for (let manipulator of manipulators) {
     if (manipulator.heading) {
-      // group
+      // manipulators group
       console.log('\n#### ' + manipulator.heading)
-      console.log('| from | to | description |')
-      console.log('| --- | --- | --- |')
-      manipz.push(...print_manipulators(manipulator.manipulators))
+      let get_stdout = buffer_stdout()
+      let sub_manipz = print_manipulators(manipulator.manipulators)
+      let saved_buffer = get_stdout()
+      console.log('| from | to |' + (sub_manipz.has_description ? ' description |' : ''))
+      console.log('| --- | --- |' + (sub_manipz.has_description ? ' --- |' : ''))
+      saved_buffer.forEach(process.stdout.write)
+      manipz.push(...sub_manipz)
     } else {
-      // TODO: do little key inserts
-      // let txt = `- ${pretty_keys(manipulator.keys)}`
-      // if (manipulator.description) txt += ` (${manipulator.description})`
-      // console.log(`- ${pretty_keys(manipulator.keys)}` + manipulator.description ? ` (${manipulator.description})` : '')
-      print_key_description(manipulator.description)
+      // individual manipulators
+      if (print_key_description(manipulator.description)) has_description = true
       // console.log(util.inspect(manipulator, {depth: 4, breakLength: 150}) + '\n')
       manipz.push(manipulator)
     }
   }
 
+  manipz.has_description = has_description
   return manipz
 }
 
@@ -396,8 +421,10 @@ function print_key_description (str) {
   if (parts = /(.*) \-\> (.*) \((.*)\)/.exec(str)) {
     console.log(`| ${pretty_keys(parts[1])} | ${pretty_keys(parts[2])} | *${parts[3]}* |`)
   } else if (parts = /(.*) \-\> (.*)/.exec(str)) {
-    console.log(`| ${pretty_keys(parts[1])} | ${pretty_keys(parts[2])} | |`)
+    console.log(`| ${pretty_keys(parts[1])} | ${pretty_keys(parts[2])} |`)
   } else throw new Error(`unable to parse description: ${str}`)
+
+  return !!parts[3]
 }
 
 function pretty_keys(str) {
@@ -448,4 +475,16 @@ function get_key (str, mandatory = false) {
   if (modifiers.length) code.modifiers = mandatory ? { mandatory: modifiers } : modifiers
 
   return code
+}
+
+function buffer_stdout () {
+  let buffer = []
+  const old_stdout = process.stdout.write
+  process.stdout.write = (txt) => { buffer.push(txt) }
+
+  return function (flush) {
+    process.stdout.write = old_stdout
+    if (flush) buffer.forEach(old_stdout.write)
+    return buffer
+  }
 }
