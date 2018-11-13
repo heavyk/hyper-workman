@@ -1,28 +1,12 @@
-const CONFIG_PATH = `${process.env.HOME}/.config/karabiner/karabiner.json`
-const ASSET_PATH = `${process.env.HOME}/.config/karabiner/assets/complex_modifications/`
-
-const fs = require('fs')
-const util = require('util')
+// const {hyper_, super_, hyper_group, generate_manipulators} = require('./karabiner-profile.js')
 
 // TODO:
-// make keyboard layout svg
+// make a keyboard layout svg
+// make a GUI configuration?
 
-// KEY IDEAS
-// hyper+command+{f,p} = select(?) to home/end
-// hyper+ctrl+{f,p} = select to home/end
-// hyper+option+{f,p} = page-up / page-down ???
-
-setTimeout(() => {
-  let get_stdout = buffer_stdout()
-
-  // TODO: move the header into its own md file, then readFileSync and output the rules.
-  // console.log('# HYPER-WorkMan (UNEO)')
-  console.log('# hyper-workman')
-  console.log(`a super cool keyboard configuration inspired by [Enhanced CapsLock](https://github.com/Vonng/Capslock) and then tailored for the [Workman Keyboard Layout](https://workmanlayout.org/).`)
-  console.log('')
-  console.log(`it uses the UNEO right-hand keys for navigation`)
-  console.log('---')
-  let rules = [
+// module.exports = \
+function make_rules () {
+  return [
     // the second rule
     {
       description: 'Hyper + Tab = Hyper Selector',
@@ -235,9 +219,13 @@ setTimeout(() => {
       ])
     ),
   ]
+}
 
-  write_output(get_stdout, rules)
-}, 0)
+const CONFIG_PATH = `${process.env.HOME}/.config/karabiner/karabiner.json`
+const ASSET_PATH = `${process.env.HOME}/.config/karabiner/assets/complex_modifications/`
+
+const fs = require('fs')
+const util = require('util')
 
 
 // ========================
@@ -540,7 +528,8 @@ function write_output (get_stdout, rules) {
     rules: rules
   }
 
-  const README = get_stdout().join('')+'\n'
+  const header = fs.readFileSync(__dirname + '/README-header.md', 'utf8')
+  const README = header + get_stdout().join('') + '\n'
   const json = JSON.stringify(complex_modifications_hyper_workman, null, '  ') + '\n'
 
   console.log('README: '+Buffer.byteLength(README)+' bytes')
@@ -565,6 +554,12 @@ function write_output (get_stdout, rules) {
     console.log('to update your karabiner profile:\n > node karabiner-profile.js update_local')
   }
 }
+
+setTimeout(() => {
+  let get_stdout = buffer_stdout()
+  let rules = make_rules()
+  write_output(get_stdout, rules)
+}, 0)
 
 if (!process.parent) {
   if (~process.argv.indexOf('--watch')) (function () {
