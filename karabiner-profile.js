@@ -45,6 +45,47 @@ function enumerate_rules () {
     // the main rule
     hyper_caps_lock_rule(),
 
+    // super rules need to come first (karabiner can get confused, otherwise)
+    make_rules(
+      "Super Selection",
+      "selecting chars under the cursor with super",
+
+      hyper_group("select up / down one line", [
+        super_("u", "shift+up"),
+        super_("e", "shift+down"),
+      ]),
+
+      hyper_group("normal 1-char selection left / right", [
+        super_("n", "shift+left"),
+        super_("o", "shift+right"),
+      ]),
+
+      hyper_group("select to beginning / end of line", [
+        super_("cmd+n", "shift+home"),
+        super_("cmd+o", "shift+end"),
+      ]),
+
+      hyper_group("select up / down 1-page", [
+        super_("cmd+f", "shift+page_up"),
+        super_("cmd+p", "shift+page_down"),
+      ]),
+
+      hyper_group("select up / down 1-paragraph", [
+        super_("opt+u", "shift+opt+up"),
+        super_("opt+e", "shift+opt+down"),
+      ]),
+
+      hyper_group("select til beginning / end of word", [
+        super_("opt+n", "shift+opt+left"),
+        super_("opt+o", "shift+opt+right"),
+      ]),
+
+      // hyper_group("select til beginning / end of word", [
+      //   super_("opt+n", "shift+opt+left"),
+      //   super_("opt+o", "shift+opt+right"),
+      // ]),
+    ),
+
     make_rules(
       "Hyper Navigation",
       "move the cursor around (UNEO configuration)",
@@ -87,54 +128,17 @@ function enumerate_rules () {
       ]),
     ),
 
-    make_rules(
-      "Super Selection",
-      "selecting chars under the cursor with super",
-
-      hyper_group("select up / down one line", [
-        super_("u", "shift+up"),
-        super_("e", "shift+down"),
-      ]),
-
-      hyper_group("normal 1-char selection left / right", [
-        super_("n", "shift+left"),
-        super_("o", "shift+right"),
-      ]),
-
-      hyper_group("select to beginning / end of line", [
-        super_("cmd+n", "shift+home"),
-        super_("cmd+o", "shift+end"),
-      ]),
-
-      hyper_group("select up / down 1-page", [
-        super_("cmd+f", "shift+page_up"),
-        super_("cmd+p", "shift+page_down"),
-      ]),
-
-      hyper_group("select up / down 1-paragraph", [
-        super_("opt+u", "shift+opt+up"),
-        super_("opt+e", "shift+opt+down"),
-      ]),
-
-      hyper_group("select til beginning / end of word", [
-        super_("opt+n", "shift+opt+left"),
-        super_("opt+o", "shift+opt+right"),
-      ]),
-
-      // hyper_group("select til beginning / end of word", [
-      //   super_("opt+n", "shift+opt+left"),
-      //   super_("opt+o", "shift+opt+right"),
-      // ]),
-    ),
-
+    // improve error msg
+    // first, copy+paste
+    // then the cursor changes
     make_rules(
       "Hyper Manipulation",
       "buffer modification",
       hyper_group("move line under cursor up / down", [
         hyper_("cmd+u", "ctrl+cmd+up"),
         hyper_("cmd+e", "ctrl+cmd+down"),
-        hyper_("d", "backspace", "backspace shortcut"), // TODO: make this smart??
-        super_("d", "delete", "delete selection"), // TODO: make this smart??
+        super_("d", "backspace", "backspace shortcut"), // TODO: make this smart??
+        hyper_("d", "delete", "delete selection"), // TODO: make this smart??
       ]),
 
       hyper_group("indent / dedent", [
@@ -164,7 +168,7 @@ function enumerate_rules () {
         // backspace - ???
         // enter - dunno... it's kinda far from where the hand sits...
         "open_bracket", "close_bracket",
-        "enter", "backspace",
+        "backspace", "period", "~",
         "semicolon", "equal_sign", "quote", "non_us_pound",
         1, 2, 3, 4, 5, 6, 7, 8, 9, 0
       ].map((key) => hyper_(key, 'shift+'+key, key+'')))
@@ -180,8 +184,11 @@ function enumerate_rules () {
       ].map((key) => hyper_(key, 'cmd+'+key))),
 
       hyper_group("essential commands", [
+        hyper_("q", "cmd+x", "cut"),
+        hyper_("r", "cmd+c", "copy"),
+        hyper_("v", "cmd+v", "paste"),
         hyper_("s", "cmd+s", "save"),
-        hyper_("a", "cmd+a", "select-all"),
+        // hyper_("a", "cmd+a", "select-all"),
         hyper_("z", "cmd+z", "undo"),
         hyper_("cmd+z", "cmd+shift+z", "redo"),
       ]),
@@ -190,9 +197,20 @@ function enumerate_rules () {
     make_rules(
       "Hyper Normal",
       "hyper should not modify these keys' behaviour",
+      hyper_group("super normal keys", [
+        // see: https://gist.github.com/mutewinter/6847308
+        "comma", // on US kbds, this should be '<' -- otherwise, it'll call sysdiagnose (only tailspin)
+        // "period", // on US kbds, this should be '>' -- otherwise, it'll call sysdiagnose (full)
+        "slash", // on US kbds, this should be '?' -- otherwise, it'll call sysdiagnose
+      ].map((key) => super_(key, 'shift+'+key, 'shift+'+key))),
+
       hyper_group("hyper normal keys", [
-        "comma", "period", "hyphen", "i",
-      ].map((key) => hyper_(key, key, key+'')))
+        "comma",
+        // "period",
+        "hyphen",
+        // "space",
+        "i", // atom is stupid, and hyper+i will open the dev console
+      ].map((key) => hyper_(key, key, key+''))),
     ),
 
     make_rules(
@@ -201,7 +219,7 @@ function enumerate_rules () {
       hyper_group("special atom configuration", [
         super_("space", "cmd+d", "select next instance of selected"),
         super_("p", "cmd+d", "select next instance of selected"),
-        super_("cmd+p", "cmd+o", "skip selection of next instance of selected"),
+        // super_("cmd+p", "cmd+o", "skip selection of next instance of selected"),
         super_("f", "cmd+u", "undo selection of next instance of selected"),
         hyper_("cmd+d", "cmd+shift+d", "duplicate line in atom"),
         super_("cmd+d", "cmd+shift+d", "duplicate line in atom"),
@@ -217,7 +235,11 @@ function enumerate_rules () {
         hyper_("/", "cmd+/", "toggle comment"),
         hyper_("[", "cmd+[", "dedent line"),
         hyper_("]", "cmd+]", "indent line"),
-      ])
+        hyper_("cmd+enter", "shift+cmd+enter", "newline above"),
+        hyper_("enter", "cmd+enter", "newline below"),
+      ]),
+
+
     ),
   ]
 }
@@ -290,6 +312,7 @@ const transform_key = {
   "\\": "non_us_pound",
   "[": "open_bracket",
   "]": "close_bracket",
+  "~": "grave_accent_and_tilde",
   "-": "hyphen",
   "=": "equal_sign",
   "'": "quote",
@@ -467,7 +490,10 @@ function hyper_group (heading, manipulators) {
   return {heading, manipulators}
 }
 
+const hyper_keys = {}
+
 function hyper_ (from, to, opts = {}) {
+  hyper_keys[from] = { loc: get_source_location('hyper_'), to }
   // TODO: in case of from/to being an object
   from = (opts.super ? 'super+' : 'hyper+') + from
   let desc = typeof opts === 'string' ? ` (${opts})`
@@ -482,6 +508,20 @@ function hyper_ (from, to, opts = {}) {
 }
 
 function super_ (from, to, opts = {}) {
+  let exists = hyper_keys[from]
+  if (exists) {
+    console.error(`
+      attempted to map super shortcut '${from}' at:
+        ${get_source_location('super_')}
+
+      however, hyper shortcut '${from}' is already already mapped at:
+        ${exists.loc}
+
+        FIX: define the super varient first. karabiner can get confused otherwise
+      `)
+    // throw 'aborting'
+  }
+
   if (typeof opts === 'string') opts = { description: opts }
   opts.super = true
   return hyper_(from, to, opts)
@@ -507,6 +547,9 @@ function get_key (str, mandatory = false) {
   return code
 }
 
+// ========================
+// ========================
+
 function buffer_stdout () {
   let buffer = []
   const old_stdout = process.stdout.write
@@ -518,6 +561,21 @@ function buffer_stdout () {
     return buffer
   }
 }
+
+function get_source_location (name = 'super_') {
+  try {
+    throw new Error()
+  } catch (e) {
+    const stack = e.stack.split('\n')
+    const idx = stack.findIndex((s) => s.includes('at ' + name)) + 1
+    return stack[idx].substring(1 + stack[idx].indexOf('('), stack[idx].length - 1)
+  }
+
+  return 'unknown'
+}
+
+// ========================
+// ========================
 
 function write_output (get_stdout, rules) {
   const complex_modifications_hyper_workman = {

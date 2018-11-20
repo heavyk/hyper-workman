@@ -16,6 +16,47 @@ developing...
 ## Rules
 
 
+### Super Selection
+
+##### selecting chars under the cursor with super
+
+#### select up / down one line
+| from | to |
+| --- | --- |
+| <kbd>◇</kbd>+<kbd>u</kbd> | <kbd>⇧</kbd>+<kbd>↑</kbd> |
+| <kbd>◇</kbd>+<kbd>e</kbd> | <kbd>⇧</kbd>+<kbd>↓</kbd> |
+
+#### normal 1-char selection left / right
+| from | to |
+| --- | --- |
+| <kbd>◇</kbd>+<kbd>n</kbd> | <kbd>⇧</kbd>+<kbd>←</kbd> |
+| <kbd>◇</kbd>+<kbd>o</kbd> | <kbd>⇧</kbd>+<kbd>→</kbd> |
+
+#### select to beginning / end of line
+| from | to |
+| --- | --- |
+| <kbd>◇</kbd>+<kbd>⌘</kbd>+<kbd>n</kbd> | <kbd>⇧</kbd>+<kbd>⤒</kbd> |
+| <kbd>◇</kbd>+<kbd>⌘</kbd>+<kbd>o</kbd> | <kbd>⇧</kbd>+<kbd>⤓</kbd> |
+
+#### select up / down 1-page
+| from | to |
+| --- | --- |
+| <kbd>◇</kbd>+<kbd>⌘</kbd>+<kbd>f</kbd> | <kbd>⇧</kbd>+<kbd>⇞</kbd> |
+| <kbd>◇</kbd>+<kbd>⌘</kbd>+<kbd>p</kbd> | <kbd>⇧</kbd>+<kbd>⇟</kbd> |
+
+#### select up / down 1-paragraph
+| from | to |
+| --- | --- |
+| <kbd>◇</kbd>+<kbd>⌥</kbd>+<kbd>u</kbd> | <kbd>⇧</kbd>+<kbd>⌥</kbd>+<kbd>↑</kbd> |
+| <kbd>◇</kbd>+<kbd>⌥</kbd>+<kbd>e</kbd> | <kbd>⇧</kbd>+<kbd>⌥</kbd>+<kbd>↓</kbd> |
+
+#### select til beginning / end of word
+| from | to |
+| --- | --- |
+| <kbd>◇</kbd>+<kbd>⌥</kbd>+<kbd>n</kbd> | <kbd>⇧</kbd>+<kbd>⌥</kbd>+<kbd>←</kbd> |
+| <kbd>◇</kbd>+<kbd>⌥</kbd>+<kbd>o</kbd> | <kbd>⇧</kbd>+<kbd>⌥</kbd>+<kbd>→</kbd> |
+
+
 ### Hyper Navigation
 
 ##### move the cursor around (UNEO configuration)
@@ -61,47 +102,6 @@ developing...
 | <kbd>✧</kbd>+<kbd>⌘</kbd>+<kbd>p</kbd> | <kbd>⇟</kbd> |
 
 
-### Super Selection
-
-##### selecting chars under the cursor with super
-
-#### select up / down one line
-| from | to |
-| --- | --- |
-| <kbd>◇</kbd>+<kbd>u</kbd> | <kbd>⇧</kbd>+<kbd>↑</kbd> |
-| <kbd>◇</kbd>+<kbd>e</kbd> | <kbd>⇧</kbd>+<kbd>↓</kbd> |
-
-#### normal 1-char selection left / right
-| from | to |
-| --- | --- |
-| <kbd>◇</kbd>+<kbd>n</kbd> | <kbd>⇧</kbd>+<kbd>←</kbd> |
-| <kbd>◇</kbd>+<kbd>o</kbd> | <kbd>⇧</kbd>+<kbd>→</kbd> |
-
-#### select to beginning / end of line
-| from | to |
-| --- | --- |
-| <kbd>◇</kbd>+<kbd>⌘</kbd>+<kbd>n</kbd> | <kbd>⇧</kbd>+<kbd>⤒</kbd> |
-| <kbd>◇</kbd>+<kbd>⌘</kbd>+<kbd>o</kbd> | <kbd>⇧</kbd>+<kbd>⤓</kbd> |
-
-#### select up / down 1-page
-| from | to |
-| --- | --- |
-| <kbd>◇</kbd>+<kbd>⌘</kbd>+<kbd>f</kbd> | <kbd>⇧</kbd>+<kbd>⇞</kbd> |
-| <kbd>◇</kbd>+<kbd>⌘</kbd>+<kbd>p</kbd> | <kbd>⇧</kbd>+<kbd>⇟</kbd> |
-
-#### select up / down 1-paragraph
-| from | to |
-| --- | --- |
-| <kbd>◇</kbd>+<kbd>⌥</kbd>+<kbd>u</kbd> | <kbd>⇧</kbd>+<kbd>⌥</kbd>+<kbd>↑</kbd> |
-| <kbd>◇</kbd>+<kbd>⌥</kbd>+<kbd>e</kbd> | <kbd>⇧</kbd>+<kbd>⌥</kbd>+<kbd>↓</kbd> |
-
-#### select til beginning / end of word
-| from | to |
-| --- | --- |
-| <kbd>◇</kbd>+<kbd>⌥</kbd>+<kbd>n</kbd> | <kbd>⇧</kbd>+<kbd>⌥</kbd>+<kbd>←</kbd> |
-| <kbd>◇</kbd>+<kbd>⌥</kbd>+<kbd>o</kbd> | <kbd>⇧</kbd>+<kbd>⌥</kbd>+<kbd>→</kbd> |
-
-
 ### Hyper Manipulation
 
 ##### buffer modification
@@ -111,8 +111,8 @@ developing...
 | --- | --- | --- |
 | <kbd>✧</kbd>+<kbd>⌘</kbd>+<kbd>u</kbd> | <kbd>^</kbd>+<kbd>⌘</kbd>+<kbd>↑</kbd> |
 | <kbd>✧</kbd>+<kbd>⌘</kbd>+<kbd>e</kbd> | <kbd>^</kbd>+<kbd>⌘</kbd>+<kbd>↓</kbd> |
-| <kbd>✧</kbd>+<kbd>d</kbd> | <kbd>⌫</kbd> | *backspace shortcut* |
-| <kbd>◇</kbd>+<kbd>d</kbd> | <kbd>⌦</kbd> | *delete selection* |
+| <kbd>◇</kbd>+<kbd>d</kbd> | <kbd>⌫</kbd> | *backspace shortcut* |
+| <kbd>✧</kbd>+<kbd>d</kbd> | <kbd>⌦</kbd> | *delete selection* |
 
 #### indent / dedent
 | from | to | description |
@@ -141,8 +141,9 @@ developing...
 | --- | --- | --- |
 | <kbd>✧</kbd>+<kbd>[</kbd> | <kbd>⇧</kbd>+<kbd>[</kbd> | *open_bracket* |
 | <kbd>✧</kbd>+<kbd>]</kbd> | <kbd>⇧</kbd>+<kbd>]</kbd> | *close_bracket* |
-| <kbd>✧</kbd>+<kbd>⌤</kbd> | <kbd>⇧</kbd>+<kbd>⌤</kbd> | *enter* |
 | <kbd>✧</kbd>+<kbd>⌫</kbd> | <kbd>⇧</kbd>+<kbd>⌫</kbd> | *backspace* |
+| <kbd>✧</kbd>+<kbd>.</kbd> | <kbd>⇧</kbd>+<kbd>.</kbd> | *period* |
+| <kbd>✧</kbd>+<kbd>~</kbd> | <kbd>⇧</kbd>+<kbd>~</kbd> | *~* |
 | <kbd>✧</kbd>+<kbd>;</kbd> | <kbd>⇧</kbd>+<kbd>;</kbd> | *semicolon* |
 | <kbd>✧</kbd>+<kbd>=</kbd> | <kbd>⇧</kbd>+<kbd>=</kbd> | *equal_sign* |
 | <kbd>✧</kbd>+<kbd>'</kbd> | <kbd>⇧</kbd>+<kbd>'</kbd> | *quote* |
@@ -166,8 +167,10 @@ developing...
 #### essential commands
 | from | to | description |
 | --- | --- | --- |
+| <kbd>✧</kbd>+<kbd>q</kbd> | <kbd>⌘</kbd>+<kbd>x</kbd> | *cut* |
+| <kbd>✧</kbd>+<kbd>r</kbd> | <kbd>⌘</kbd>+<kbd>c</kbd> | *copy* |
+| <kbd>✧</kbd>+<kbd>v</kbd> | <kbd>⌘</kbd>+<kbd>v</kbd> | *paste* |
 | <kbd>✧</kbd>+<kbd>s</kbd> | <kbd>⌘</kbd>+<kbd>s</kbd> | *save* |
-| <kbd>✧</kbd>+<kbd>a</kbd> | <kbd>⌘</kbd>+<kbd>a</kbd> | *select-all* |
 | <kbd>✧</kbd>+<kbd>z</kbd> | <kbd>⌘</kbd>+<kbd>z</kbd> | *undo* |
 | <kbd>✧</kbd>+<kbd>⌘</kbd>+<kbd>z</kbd> | <kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>z</kbd> | *redo* |
 
@@ -176,11 +179,16 @@ developing...
 
 ##### hyper should not modify these keys' behaviour
 
+#### super normal keys
+| from | to | description |
+| --- | --- | --- |
+| <kbd>◇</kbd>+<kbd>,</kbd> | <kbd>⇧</kbd>+<kbd>,</kbd> | *shift+comma* |
+| <kbd>◇</kbd>+<kbd>/</kbd> | <kbd>⇧</kbd>+<kbd>/</kbd> | *shift+slash* |
+
 #### hyper normal keys
 | from | to | description |
 | --- | --- | --- |
 | <kbd>✧</kbd>+<kbd>,</kbd> | <kbd>,</kbd> | *comma* |
-| <kbd>✧</kbd>+<kbd>.</kbd> | <kbd>.</kbd> | *period* |
 | <kbd>✧</kbd>+<kbd>-</kbd> | <kbd>-</kbd> | *hyphen* |
 | <kbd>✧</kbd>+<kbd>i</kbd> | <kbd>i</kbd> | *i* |
 
@@ -194,7 +202,6 @@ developing...
 | --- | --- | --- |
 | <kbd>◇</kbd>+<kbd>space</kbd> | <kbd>⌘</kbd>+<kbd>d</kbd> | *select next instance of selected* |
 | <kbd>◇</kbd>+<kbd>p</kbd> | <kbd>⌘</kbd>+<kbd>d</kbd> | *select next instance of selected* |
-| <kbd>◇</kbd>+<kbd>⌘</kbd>+<kbd>p</kbd> | <kbd>⌘</kbd>+<kbd>o</kbd> | *skip selection of next instance of selected* |
 | <kbd>◇</kbd>+<kbd>f</kbd> | <kbd>⌘</kbd>+<kbd>u</kbd> | *undo selection of next instance of selected* |
 | <kbd>✧</kbd>+<kbd>⌘</kbd>+<kbd>d</kbd> | <kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>d</kbd> | *duplicate line in atom* |
 | <kbd>◇</kbd>+<kbd>⌘</kbd>+<kbd>d</kbd> | <kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>d</kbd> | *duplicate line in atom* |
@@ -211,4 +218,6 @@ developing...
 | <kbd>✧</kbd>+<kbd>/</kbd> | <kbd>⌘</kbd>+<kbd>/</kbd> | *toggle comment* |
 | <kbd>✧</kbd>+<kbd>[</kbd> | <kbd>⌘</kbd>+<kbd>[</kbd> | *dedent line* |
 | <kbd>✧</kbd>+<kbd>]</kbd> | <kbd>⌘</kbd>+<kbd>]</kbd> | *indent line* |
+| <kbd>✧</kbd>+<kbd>⌘</kbd>+<kbd>⌤</kbd> | <kbd>⇧</kbd>+<kbd>⌘</kbd>+<kbd>⌤</kbd> | *newline above* |
+| <kbd>✧</kbd>+<kbd>⌤</kbd> | <kbd>⌘</kbd>+<kbd>⌤</kbd> | *newline below* |
 

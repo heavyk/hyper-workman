@@ -10,6 +10,7 @@
     "clear-module": "^3.0.0"
   },
   "scripts": {
+    "start": "node karabiner-profile.js update_local --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
