@@ -66,8 +66,8 @@ function enumerate_rules () {
       ]),
 
       hyper_group("select up / down 1-page", [
-        super_("cmd+f", "shift+page_up"),
-        super_("cmd+p", "shift+page_down"),
+        super_("cmd+u", "shift+page_up"),
+        super_("cmd+e", "shift+page_down"),
       ]),
 
       hyper_group("select up / down 1-paragraph", [
@@ -84,6 +84,19 @@ function enumerate_rules () {
       //   super_("opt+n", "shift+opt+left"),
       //   super_("opt+o", "shift+opt+right"),
       // ]),
+    ),
+
+    make_rules(
+      "Super Atom",
+      "atom specific programming commands",
+      hyper_group("special atom configuration", [
+        super_("space", "cmd+d", "select next instance of selected"),
+        super_("p", "cmd+d", "select next instance of selected"),
+        super_(";", "cmd+o", "skip selection of next instance of selected"),
+        // super_("cmd+p", "cmd+o", "skip selection of next instance of selected"),
+        super_("f", "cmd+u", "undo selection of next instance of selected"),
+        super_("cmd+d", "cmd+shift+d", "duplicate line in atom"),
+      ]),
     ),
 
     make_rules(
@@ -217,16 +230,11 @@ function enumerate_rules () {
       "Hyper Atom",
       "atom specific programming commands",
       hyper_group("special atom configuration", [
-        super_("space", "cmd+d", "select next instance of selected"),
-        super_("p", "cmd+d", "select next instance of selected"),
-        // super_("cmd+p", "cmd+o", "skip selection of next instance of selected"),
-        super_("f", "cmd+u", "undo selection of next instance of selected"),
         hyper_("cmd+d", "cmd+shift+d", "duplicate line in atom"),
-        super_("cmd+d", "cmd+shift+d", "duplicate line in atom"),
+        hyper_("opt+d", "ctrl+shift+k", "delete line in atom"),
       ]),
 
-      hyper_group("common atom keys", [
-        hyper_("opt+d", "ctrl+shift+k", "delete line in atom"),
+      hyper_group("common atom shortcuts mapped to hyper", [
         hyper_("cmd+backspace", "cmd+backspace", "delete until beginning of line"),
         hyper_("opt+backspace", "opt+backspace", "delete word"),
         hyper_("backspace", "delete_forward", "delete one char in front"),
@@ -238,8 +246,6 @@ function enumerate_rules () {
         hyper_("cmd+enter", "shift+cmd+enter", "newline above"),
         hyper_("enter", "cmd+enter", "newline below"),
       ]),
-
-
     ),
   ]
 }
@@ -491,14 +497,27 @@ function hyper_group (heading, manipulators) {
 }
 
 const hyper_keys = {}
-
 function hyper_ (from, to, opts = {}) {
-  hyper_keys[from] = { loc: get_source_location('hyper_'), to }
+  let exists = hyper_keys[from]
+  if (exists) {
+    console.error(`
+      attempted to map hyper shortcut '${from}' at:
+        ${get_source_location('hyper_')}
+
+      however, it's already mapped at:
+        ${exists.loc}
+
+        FIX: delete duplicate
+      `)
+  }
+
   // TODO: in case of from/to being an object
   from = (opts.super ? 'super+' : 'hyper+') + from
+  hyper_keys[from] = { loc: get_source_location(opts.super ? 'super_' : 'hyper_'), to }
   let desc = typeof opts === 'string' ? ` (${opts})`
     : typeof opts.description === 'string' ? ` (${opts.description})`
     : ''
+
   return {
     description: `${from} -> ${to}` + desc,
     from: get_key(from, to, opts),
@@ -514,12 +533,11 @@ function super_ (from, to, opts = {}) {
       attempted to map super shortcut '${from}' at:
         ${get_source_location('super_')}
 
-      however, hyper shortcut '${from}' is already already mapped at:
+      however, another shortcut '${from}' is already mapped at:
         ${exists.loc}
 
         FIX: define the super varient first. karabiner can get confused otherwise
       `)
-    // throw 'aborting'
   }
 
   if (typeof opts === 'string') opts = { description: opts }
@@ -562,12 +580,12 @@ function buffer_stdout () {
   }
 }
 
-function get_source_location (name = 'super_') {
+function get_source_location (fn_name) {
   try {
     throw new Error()
   } catch (e) {
     const stack = e.stack.split('\n')
-    const idx = stack.findIndex((s) => s.includes('at ' + name)) + 1
+    const idx = stack.findIndex((s) => s.includes('at ' + fn_name)) + 1
     return stack[idx].substring(1 + stack[idx].indexOf('('), stack[idx].length - 1)
   }
 

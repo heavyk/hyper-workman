@@ -230,9 +230,9 @@
           "type": "basic"
         },
         {
-          "description": "super+cmd+f -> shift+page_up",
+          "description": "super+cmd+u -> shift+page_up",
           "from": {
-            "key_code": "u",
+            "key_code": "i",
             "modifiers": {
               "mandatory": [
                 "right_command",
@@ -255,9 +255,9 @@
           "type": "basic"
         },
         {
-          "description": "super+cmd+p -> shift+page_down",
+          "description": "super+cmd+e -> shift+page_down",
           "from": {
-            "key_code": "o",
+            "key_code": "k",
             "modifiers": {
               "mandatory": [
                 "right_command",
@@ -378,6 +378,134 @@
               "modifiers": [
                 "left_shift",
                 "left_option"
+              ]
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "title": "Super Atom",
+      "description": "atom specific programming commands",
+      "manipulators": [
+        {
+          "description": "super+space -> cmd+d (select next instance of selected)",
+          "from": {
+            "key_code": "spacebar",
+            "modifiers": {
+              "mandatory": [
+                "right_command",
+                "right_control",
+                "right_shift",
+                "right_option",
+                "left_shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "w",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "description": "super+p -> cmd+d (select next instance of selected)",
+          "from": {
+            "key_code": "o",
+            "modifiers": {
+              "mandatory": [
+                "right_command",
+                "right_control",
+                "right_shift",
+                "right_option",
+                "left_shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "w",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "description": "super+; -> cmd+o (skip selection of next instance of selected)",
+          "from": {
+            "key_code": "p",
+            "modifiers": {
+              "mandatory": [
+                "right_command",
+                "right_control",
+                "right_shift",
+                "right_option",
+                "left_shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "l",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "description": "super+f -> cmd+u (undo selection of next instance of selected)",
+          "from": {
+            "key_code": "u",
+            "modifiers": {
+              "mandatory": [
+                "right_command",
+                "right_control",
+                "right_shift",
+                "right_option",
+                "left_shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "i",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "description": "super+cmd+d -> cmd+shift+d (duplicate line in atom)",
+          "from": {
+            "key_code": "w",
+            "modifiers": {
+              "mandatory": [
+                "right_command",
+                "right_control",
+                "right_shift",
+                "right_option",
+                "left_shift",
+                "left_command"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "w",
+              "modifiers": [
+                "left_command",
+                "left_shift"
               ]
             }
           ],
@@ -1644,78 +1772,6 @@
       "description": "atom specific programming commands",
       "manipulators": [
         {
-          "description": "super+space -> cmd+d (select next instance of selected)",
-          "from": {
-            "key_code": "spacebar",
-            "modifiers": {
-              "mandatory": [
-                "right_command",
-                "right_control",
-                "right_shift",
-                "right_option",
-                "left_shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "w",
-              "modifiers": [
-                "left_command"
-              ]
-            }
-          ],
-          "type": "basic"
-        },
-        {
-          "description": "super+p -> cmd+d (select next instance of selected)",
-          "from": {
-            "key_code": "o",
-            "modifiers": {
-              "mandatory": [
-                "right_command",
-                "right_control",
-                "right_shift",
-                "right_option",
-                "left_shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "w",
-              "modifiers": [
-                "left_command"
-              ]
-            }
-          ],
-          "type": "basic"
-        },
-        {
-          "description": "super+f -> cmd+u (undo selection of next instance of selected)",
-          "from": {
-            "key_code": "u",
-            "modifiers": {
-              "mandatory": [
-                "right_command",
-                "right_control",
-                "right_shift",
-                "right_option",
-                "left_shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "i",
-              "modifiers": [
-                "left_command"
-              ]
-            }
-          ],
-          "type": "basic"
-        },
-        {
           "description": "hyper+cmd+d -> cmd+shift+d (duplicate line in atom)",
           "from": {
             "key_code": "w",
@@ -1725,32 +1781,6 @@
                 "right_control",
                 "right_shift",
                 "right_option",
-                "left_command"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "w",
-              "modifiers": [
-                "left_command",
-                "left_shift"
-              ]
-            }
-          ],
-          "type": "basic"
-        },
-        {
-          "description": "super+cmd+d -> cmd+shift+d (duplicate line in atom)",
-          "from": {
-            "key_code": "w",
-            "modifiers": {
-              "mandatory": [
-                "right_command",
-                "right_control",
-                "right_shift",
-                "right_option",
-                "left_shift",
                 "left_command"
               ]
             }

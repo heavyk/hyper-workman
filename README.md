@@ -41,8 +41,8 @@ developing...
 #### select up / down 1-page
 | from | to |
 | --- | --- |
-| <kbd>◇</kbd>+<kbd>⌘</kbd>+<kbd>f</kbd> | <kbd>⇧</kbd>+<kbd>⇞</kbd> |
-| <kbd>◇</kbd>+<kbd>⌘</kbd>+<kbd>p</kbd> | <kbd>⇧</kbd>+<kbd>⇟</kbd> |
+| <kbd>◇</kbd>+<kbd>⌘</kbd>+<kbd>u</kbd> | <kbd>⇧</kbd>+<kbd>⇞</kbd> |
+| <kbd>◇</kbd>+<kbd>⌘</kbd>+<kbd>e</kbd> | <kbd>⇧</kbd>+<kbd>⇟</kbd> |
 
 #### select up / down 1-paragraph
 | from | to |
@@ -55,6 +55,20 @@ developing...
 | --- | --- |
 | <kbd>◇</kbd>+<kbd>⌥</kbd>+<kbd>n</kbd> | <kbd>⇧</kbd>+<kbd>⌥</kbd>+<kbd>←</kbd> |
 | <kbd>◇</kbd>+<kbd>⌥</kbd>+<kbd>o</kbd> | <kbd>⇧</kbd>+<kbd>⌥</kbd>+<kbd>→</kbd> |
+
+
+### Super Atom
+
+##### atom specific programming commands
+
+#### special atom configuration
+| from | to | description |
+| --- | --- | --- |
+| <kbd>◇</kbd>+<kbd>space</kbd> | <kbd>⌘</kbd>+<kbd>d</kbd> | *select next instance of selected* |
+| <kbd>◇</kbd>+<kbd>p</kbd> | <kbd>⌘</kbd>+<kbd>d</kbd> | *select next instance of selected* |
+| <kbd>◇</kbd>+<kbd>;</kbd> | <kbd>⌘</kbd>+<kbd>o</kbd> | *skip selection of next instance of selected* |
+| <kbd>◇</kbd>+<kbd>f</kbd> | <kbd>⌘</kbd>+<kbd>u</kbd> | *undo selection of next instance of selected* |
+| <kbd>◇</kbd>+<kbd>⌘</kbd>+<kbd>d</kbd> | <kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>d</kbd> | *duplicate line in atom* |
 
 
 ### Hyper Navigation
@@ -200,16 +214,12 @@ developing...
 #### special atom configuration
 | from | to | description |
 | --- | --- | --- |
-| <kbd>◇</kbd>+<kbd>space</kbd> | <kbd>⌘</kbd>+<kbd>d</kbd> | *select next instance of selected* |
-| <kbd>◇</kbd>+<kbd>p</kbd> | <kbd>⌘</kbd>+<kbd>d</kbd> | *select next instance of selected* |
-| <kbd>◇</kbd>+<kbd>f</kbd> | <kbd>⌘</kbd>+<kbd>u</kbd> | *undo selection of next instance of selected* |
 | <kbd>✧</kbd>+<kbd>⌘</kbd>+<kbd>d</kbd> | <kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>d</kbd> | *duplicate line in atom* |
-| <kbd>◇</kbd>+<kbd>⌘</kbd>+<kbd>d</kbd> | <kbd>⌘</kbd>+<kbd>⇧</kbd>+<kbd>d</kbd> | *duplicate line in atom* |
+| <kbd>✧</kbd>+<kbd>⌥</kbd>+<kbd>d</kbd> | <kbd>^</kbd>+<kbd>⇧</kbd>+<kbd>k</kbd> | *delete line in atom* |
 
-#### common atom keys
+#### common atom shortcuts mapped to hyper
 | from | to | description |
 | --- | --- | --- |
-| <kbd>✧</kbd>+<kbd>⌥</kbd>+<kbd>d</kbd> | <kbd>^</kbd>+<kbd>⇧</kbd>+<kbd>k</kbd> | *delete line in atom* |
 | <kbd>✧</kbd>+<kbd>⌘</kbd>+<kbd>⌫</kbd> | <kbd>⌘</kbd>+<kbd>⌫</kbd> | *delete until beginning of line* |
 | <kbd>✧</kbd>+<kbd>⌥</kbd>+<kbd>⌫</kbd> | <kbd>⌥</kbd>+<kbd>⌫</kbd> | *delete word* |
 | <kbd>✧</kbd>+<kbd>⌫</kbd> | <kbd>delete_forward</kbd> | *delete one char in front* |
